@@ -5,7 +5,7 @@ const VehiculoEschema = mongoose.Schema({
         type: String,
         require: [true, 'Tipo de vehículo es obligatorio'],
         lowercase: true,
-        enum: {values:['terrestre', 'marítimo', 'aéreo'], message: 'Tipo de vehículo no válido'}
+        enum: {values:['terrestre', 'marítimo', 'aereo'], message: 'Tipo de vehículo no válido'}
     },
     url:{
         type: String,

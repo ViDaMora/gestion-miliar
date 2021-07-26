@@ -16,5 +16,16 @@ class VehiculoRepositoryMongo extends VehiculoRepository{
         await mongoVehiculo.save()
         return new Vehiculo(mongoVehiculo._id,mongoVehiculo.tipoVehiculo,mongoVehiculo.url)
     }
+
+    async delete(id){
+        
+        return VehiculoSchema.deleteOne({_id:id})   
+        
+    }
+
+    async findById(id){
+        return VehiculoSchema.findOne({_id:id})
+    }
+
 }
 module.exports = {VehiculoRepositoryMongo}

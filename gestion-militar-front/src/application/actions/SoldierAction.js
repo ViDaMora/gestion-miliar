@@ -1,8 +1,8 @@
-import { SET_SOLDIER } from "../types/SoldierTypes";
+import { GET_SOLDIER } from "../types/SoldierTypes";
 
-export const SetSoldierInfo = (soldierInfo) => {
+export const GetSoldierInfo = (soldierInfo) => {
     return {
-        type: SET_SOLDIER,
+        type: GET_SOLDIER,
         payload: soldierInfo,
     };
 };

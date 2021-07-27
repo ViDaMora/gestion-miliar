@@ -1,13 +1,13 @@
-import { SET_SOLDIER, ERROR } from '../types/SoldierTypes';
+import { GET_SOLDIER, GET_SOLDIER_ERROR } from '../types/SoldierTypes';
 
 export default function SoldierInfo(state = {}, action) {
     switch (action.type) {
-        case SET_SOLDIER:
+        case GET_SOLDIER:
             return {
                 ...state,
                 soldierInfo: action.payload
             }
-        case ERROR:
+        case GET_SOLDIER_ERROR:
             return { ...state, error: action.payload, loading: false };
         default:
             return state

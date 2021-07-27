@@ -2,9 +2,10 @@
 
 
 class Militar {
-    constructor (id,nombre,activo,nacionalidad,cc,autoridad,genero,edad){
+    constructor (id,nombre,email,activo,nacionalidad,cc,autoridad,genero,edad){
         this.id = id;
         this.nombre=nombre;
+        this.email=email;
         this.activo=activo;
         this.nacionalidad=nacionalidad;
         this.cc=cc;

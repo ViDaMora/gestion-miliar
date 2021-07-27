@@ -1,9 +1,8 @@
 'use strict';
 
 
-module.exports = class {
-
-    save(lider){
+module.exports = class{
+    save(operacion){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
@@ -14,7 +13,8 @@ module.exports = class {
     findById(id){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
-    findByCC(cc){
+
+    update(operacion){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }

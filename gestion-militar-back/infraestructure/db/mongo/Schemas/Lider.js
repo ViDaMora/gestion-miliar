@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const MilitarSchema = mongoose.Schema({
+const LiderSchema = mongoose.Schema({
    
     nombre:{
         type:String,
@@ -8,22 +8,10 @@ const MilitarSchema = mongoose.Schema({
         minLength: [2, 'La longitud minima del nombre es 2'],
     },
 
-    email:{
-        type:String,
-        require: [true, 'email es obligatorio'],
-        lowercase: true,
-        minLength: [2, 'La longitud minima del email es 2'],
-    },
-
-    activo:{
-        type:Boolean,
-        require: [true, 'estado es obligatorio'],
-    },
-
     nacionalidad:{
         type:String,
         lowercase: true,
-        minLength: [2, 'La longitud minima de la nacinoalidad  es 2'],
+        minLength: [2, 'La longitud minima de la nacionalidad  es 2'],
     },
 
     cc:{
@@ -47,7 +35,13 @@ const MilitarSchema = mongoose.Schema({
         'cabo'], message: 'Autoridad no válida'}
         
     },
+ 
+    activo:{
+        type:Boolean,
+        require: [true, 'estado es obligatorio'],
+    },
 
+   
     genero:{
         type:String,
         lowercase: true,
@@ -64,4 +58,4 @@ const MilitarSchema = mongoose.Schema({
     
 })
 
-module.exports= mongoose.model('Militar', MilitarSchema)
+module.exports= mongoose.model('Lider', LiderSchema)

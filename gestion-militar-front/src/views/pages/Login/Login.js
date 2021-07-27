@@ -5,12 +5,6 @@ import { signInWithGoogle } from "../../../infrastructure/services/firebase/auth
 
 export default class Login extends Component {
 
-    handleChange(event) {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
-
     async googleSignIn() {
         try {
             await signInWithGoogle();
@@ -23,7 +17,7 @@ export default class Login extends Component {
         return (
             <div className="container d-flex justify-content-center">
                 <div className="col-lg-7 rounded border d-flex justify-content-center form">
-                    <form autoComplete="off" onSubmit={this.handleSubmit} className="mt-5 py-5 px-5">
+                    <div className="mt-5 py-5 px-5">
                         <h1>
                             Ingresa a
                             <Link to="/"> Gestión Militar</Link>
@@ -40,7 +34,7 @@ export default class Login extends Component {
                             </button>
                         </div>
                         <hr />
-                    </form>
+                    </div>
                 </div>
             </div>
         );

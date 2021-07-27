@@ -1,14 +1,13 @@
 'use strict';
 
 class Unidad {
-    constructor (id,unidadId,lider,descripcion,pais,nombre){
+    constructor (id,tipoUnidad,encargado,asignada,militares,vehiculos){
     this.id = id;
-    this.unidadId = unidadId;
-    this.lider = lider;
-    this.descripcion = descripcion;
-    this.pais = pais;
-    this.activa = false;
-    this.nombre = nombre;
+    this.tipoUnidad=tipoUnidad;
+    this.encargado=encargado;
+    this.asignada=asignada;
+    this.militares=militares;
+    this.vehiculos=vehiculos;
     };
 }
 

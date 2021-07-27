@@ -37,7 +37,6 @@ async function Crear_Unidad(tipoUnidad,UnidadRepository,MilitarRepository,cc){
     await MilitarRepository.updateEstado(militar._id)
     return await UnidadRepository.save(unidad)
 
-
 }
 
 module.exports = {Crear_Unidad}

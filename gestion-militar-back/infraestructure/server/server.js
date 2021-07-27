@@ -11,5 +11,4 @@ const createServer = async () => {
     app.listen(PORT, () => {console.log(`Server listening on port http://localhost:${PORT}`)})
 }
 
-
 module.exports =  {createServer} 

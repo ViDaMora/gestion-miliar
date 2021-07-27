@@ -1,7 +1,7 @@
 const Operacion = require('../../../domain/Operacion/Operacion')
 const Unidad = require('../../../domain/Unidad/Unidad')
 
-
+// OP NO TRIVIAL
 async function Terminar_Operacion(id,UnidadRepository,OperacionRepository){
 
     let operacion = await OperacionRepository.findById(id)

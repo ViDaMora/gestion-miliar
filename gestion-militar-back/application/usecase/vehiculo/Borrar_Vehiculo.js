@@ -5,7 +5,7 @@ async function  borrarVehiculo(id,VehiculoRepository){
         return {errorMessage:"Vehiculo no Encontrado",
         succes:false}
     }
-    VehiculoRepository.delete(id)
+    await VehiculoRepository.delete(id)
     return {message: "Vehiculo eliminado con exito",
             succes:true}
 }

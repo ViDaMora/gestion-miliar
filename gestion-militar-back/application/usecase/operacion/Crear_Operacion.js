@@ -26,6 +26,9 @@ async function Crear_Operacion(unidadId,lider,descripcion,pais,nombre,UnidadRepo
             succes:false
         }
     }
+    if(liderExiste.activo){
+        return {errorMessage: "El lider ya esta asignado a una unidad", succes:false}
+    }
     await LiderRepository.updateActivo(lider.id)
     return await OperacionRepository.save(operacion)
 }

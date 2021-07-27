@@ -4,8 +4,9 @@ async function Retirar_Lider(id,LiderRepository){
         return {errorMessage: "Lider no encontrado",
                  succes: false}
     }
-     await LiderRepository.delete(id)
-     return {message: "Lider eliminado con exito",
+     let newLider= await LiderRepository.updateActive(id)
+     return {message: "Lider retirado con exito",
+            lider: newLider,
             succes: true}
 }
 

@@ -1,5 +1,6 @@
 let {CreateMilitar} = require('../../../application/usecase/militar/Guardar_Militar')
 let {borrarMilitar}=require('../../../application/usecase/militar/Borrar_Militar')
+let {Obtener_Militares} = require('../../../application/usecase/militar/Obtener_Militares')
 let {VehiculoRepositoryMongo, MilitarRepositoryMongo} = require('../../repository/MilitarRepository')
 
 
@@ -22,6 +23,18 @@ async function deleteMilitar(req,res){
         res.status(500).send(error);
     }
 }
+
+
+async function getMilitares(req,res){
+    try{
+        let militar=await Obtener_Militares(VehiculoRepositoryMongo.prototype)
+        res.json(militar)
+    }catch(error){
+        res.status(500).send(error);
+    }
+}
+
+
 
 
 module.exports ={addMilitar,deleteMilitar}

@@ -26,5 +26,14 @@ class MilitarRepositoryMongo extends MilitarRepository{
         return MilitarSchema.findOne({_id:id})
     }
 
+    async findAll(){
+        return MilitarSchema.find({})
+    }
+
+
+    async findByEmail(email){
+        return MilitarSchema.findOne({email:email})
+    }
+
 }
 module.exports = {MilitarRepositoryMongo}

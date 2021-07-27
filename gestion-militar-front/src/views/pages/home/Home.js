@@ -6,7 +6,7 @@ import Header from "../../components/Header";
 
 class Home extends Component {
 
-    componentDidMount() {
+    async componentDidMount() {
         this.props.GetSoldierInfo()
     }
 

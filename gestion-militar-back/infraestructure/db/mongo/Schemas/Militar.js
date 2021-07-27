@@ -9,6 +9,18 @@ const MilitarSchema = mongoose.Schema({
         minLength: [2, 'La longitud minima del nombre es 2'],
     },
 
+    email:{
+        type:String,
+        require: [true, 'email es obligatorio'],
+        lowercase: true,
+        minLength: [2, 'La longitud minima del email es 2'],
+    },
+
+    activo:{
+        type:Boolean,
+        require: [true, 'estado es obligatorio'],
+    },
+
     nacionalidad:{
         type:String,
         require: [true, 'nacionalidad es obligatoria'],

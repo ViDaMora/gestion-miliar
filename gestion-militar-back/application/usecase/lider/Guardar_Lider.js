@@ -1,6 +1,6 @@
 const cadenaMando = require('../CadenaMando')
 const Lider = require('../../../domain/Lider/Lider')
-async function Guardar_Lider(nombre,activo,nacionalidad,cc,autoridad,genero,edad,LiderRepository){
+async function Guardar_Lider(nombre,nacionalidad,cc,autoridad,genero,edad,LiderRepository){
     let liderExist = await LiderRepository.findById(id)
     if(liderExist){
         return {errorMessage: "Este lider ya existe en la base de datos"}
@@ -11,7 +11,7 @@ async function Guardar_Lider(nombre,activo,nacionalidad,cc,autoridad,genero,edad
             cadenaMando: CadenaMando}
     }
 
-    const lider = new Lider(null,nombre,nacionalidad,cc,autoridad,genero,edad,activo)
+    const lider = new Lider(null,nombre,nacionalidad,cc,autoridad,genero,edad,false)
 
     return await LiderRepository.save(lider)
 

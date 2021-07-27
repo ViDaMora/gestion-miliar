@@ -8,8 +8,8 @@ const createServer = async () => {
 
     app.use('/militarapi/v1',require('./routes/Vehiculo'))
     app.use('/militarapi/v1',require('./routes/Militar'))
+    app.use('/militarapi/v1',require('./routes/Lider'))
     app.listen(PORT, () => {console.log(`Server listening on port http://localhost:${PORT}`)})
 }
-
 
 module.exports =  {createServer} 

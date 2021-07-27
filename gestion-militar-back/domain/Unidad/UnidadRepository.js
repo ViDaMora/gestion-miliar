@@ -2,7 +2,7 @@
 
 
 module.exports = class{
-    save(militar){
+    save(unidad){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
@@ -10,14 +10,11 @@ module.exports = class{
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    findByEmail(email){
-        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
-    }
     findById(id){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 
-    findAll(){
+    update(unidad){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
 }

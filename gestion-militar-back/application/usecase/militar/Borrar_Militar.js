@@ -8,4 +8,4 @@ async function  borrarMilitar(id,MilitarRepository){
     return {message: "Militar eliminado con exito",
             succes:true}
 }
-module.exports={borrarMilitar} 
+module.exports={borrarMilitar}

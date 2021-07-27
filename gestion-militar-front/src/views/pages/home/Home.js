@@ -1,33 +1,44 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { GetSoldierInfo } from "../../../application/actions/SoldierAction";
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { soldierAction } from '../../../application/actions/SoldierAction'
+// import { GetSoldierInfo } from "../../../application/actions/SoldierAction";
 import Header from "../../components/Header";
 
 
-class Home extends Component {
+function Home() {
 
-    async componentDidMount() {
-        this.props.GetSoldierInfo()
+    const dispatch = useDispatch();
+
+    const listSoldier = () =>{
+        console.log("Hola");
+        dispatch(soldierAction());
     }
 
-    render() {
+/*
+    useEffect(() => {
+        const militares = () => dispatch(soldierAction());
+        militares();
+    }, [dispatch])
+*/
 
-        return (
-            <>
-                <Header />
-                <div className="container">
-
-                </div>
-            </>
-        )
-    }
+    return (
+        <div><Header />
+            <div className="container">
+                <br/>
+                <br/>
+                <br/>          
+                <button onClick={() => listSoldier()}>Listar</button>
+            </div>
+        </div>
+    )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        GetSoldierInfo: () => dispatch(GetSoldierInfo()),
-    }
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         GetSoldierInfo: () => dispatch(GetSoldierInfo()),
+//     }
 
-}
+// }
 
-export default connect(null, mapDispatchToProps)(Home);
+export default Home;
+// export default connect(null, mapDispatchToProps)(Home);

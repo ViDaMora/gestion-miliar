@@ -14,4 +14,7 @@ module.exports = class {
     findById(id){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+    findByCC(cc){
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
 }

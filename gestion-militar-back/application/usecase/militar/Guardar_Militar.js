@@ -1,12 +1,23 @@
 
 const Militar = require('../../../domain/Militar/Militar')
 
-async function CreateMilitar(nombre,email,activo,nacionalidad,cc,autoridad,genero,edad,MilitarRepository){
+async function CreateMilitar(nombre,email,nacionalidad,cc,autoridad,genero,edad,MilitarRepository){
     //AQUI SE VALIDA LA LOGICA DE NEGOCIO
-    const militar = new Militar(null,nombre,email,activo,nacionalidad,cc,autoridad,genero,edad)
+    if(!email){
+        return {errorMessage:"Para crear un militar por lo menos debe existir un email",
+    succes:false};
+    }
+    let militarExiste = await MilitarRepository.findByEmail(email)
 
+    if(militarExiste){
+        return {errorMessage:"El militar ingresado ya existe",
+         succes:false};
+    }
+    const militar = new Militar(null,nombre,email,false,nacionalidad,cc,autoridad,genero,edad)
     return MilitarRepository.save(militar)
 }
 
 
 module.exports = {CreateMilitar}
+
+

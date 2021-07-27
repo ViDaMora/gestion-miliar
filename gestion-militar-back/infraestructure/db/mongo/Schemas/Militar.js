@@ -27,7 +27,16 @@ const MilitarSchema = mongoose.Schema({
         type:String,
         require: [true, 'autoridad es obligatoria'],
         lowercase: true,
-        enum: {values:['soldado', 'sargento', 'capitan','general','cabo','teniente','subteniente'], message: 'Autoridad no válida'}
+        enum: {values:['general',
+        'teniente',
+        'mayor',
+        'brigadier',
+        'coronel',
+        'comandante',
+        'mayor',
+        'capitan',
+        'sargento',
+        'cabo'], message: 'Autoridad no válida'}
         
     },
 
@@ -35,7 +44,7 @@ const MilitarSchema = mongoose.Schema({
         type:String,
         require: [true, 'genero es obligatorio'],
         lowercase: true,
-        enum: {values:['M', 'F','masculino','femenino'], message: 'genero no válido'}
+        enum: {values:['m', 'f','masculino','femenino'], message: 'genero no válido'}
         
     },
 
@@ -45,7 +54,6 @@ const MilitarSchema = mongoose.Schema({
         lowercase: true,
         minLength: [1, 'La longitud minima de la edad  es 1'],
         maxLength:[3,'la longitud maxima de la edad es 3']    
-        
     },
     
 })

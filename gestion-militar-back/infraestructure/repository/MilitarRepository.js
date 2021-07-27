@@ -37,5 +37,10 @@ class MilitarRepositoryMongo extends MilitarRepository{
         return MilitarSchema.findOne({email:email})
     }
 
+    
+    async updateEstado(cc){
+        return MilitarSchema.update({cc:cc},{activo:true})
+    }
+
 }
 module.exports = {MilitarRepositoryMongo}

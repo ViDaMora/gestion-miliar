@@ -5,8 +5,8 @@ let {VehiculoRepositoryMongo, MilitarRepositoryMongo} = require('../../repositor
 
 async function addMilitar (req,res){
     try{
-        const {nombre,nacionalidad,cc,autoridad,genero,edad}=req.body
-        let militar=await CreateMilitar(nombre,nacionalidad,cc,autoridad,genero,edad,MilitarRepositoryMongo.prototype)
+        const {nombre,activo,nacionalidad,cc,autoridad,genero,edad}=req.body
+        let militar=await CreateMilitar(nombre,activo,nacionalidad,cc,autoridad,genero,edad,MilitarRepositoryMongo.prototype)
         res.json(militar)
     }catch(error){
         res.status(500).send(error);

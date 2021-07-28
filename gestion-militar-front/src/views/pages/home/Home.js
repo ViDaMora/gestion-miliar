@@ -9,24 +9,24 @@ function Home() {
 
     const dispatch = useDispatch();
 
-    const listSoldier = () =>{
+    const listSoldier = () => {
         console.log("Hola");
         dispatch(soldierAction());
     }
 
-/*
+
     useEffect(() => {
         const militares = () => dispatch(soldierAction());
         militares();
     }, [dispatch])
-*/
+
 
     return (
         <div><Header />
             <div className="container">
-                <br/>
-                <br/>
-                <br/>          
+                <br />
+                <br />
+                <br />
                 <button onClick={() => listSoldier()}>Listar</button>
             </div>
         </div>

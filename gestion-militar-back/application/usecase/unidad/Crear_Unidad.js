@@ -2,9 +2,9 @@ const cadenaMando = require('../CadenaMando')
 const Unidad = require('../../../domain/Unidad/Unidad')
 const Militar = require('../../../domain/Militar/Militar')
 
-async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
+async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc){
 
-    if(cc){
+    if(!cc){
         return {
             errorMessage: "para crear unidad es necesario la cedula del militar"
         }
@@ -34,7 +34,7 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
     }
 
     let unidad = new Unidad(null,tipoUnidad,militar,false,null,null)
-    await MilitarRepository.updateEstado(cc)
+    await MilitarRepository.updateEstado(militar._id)
     return await UnidadRepository.save(unidad)
 
 

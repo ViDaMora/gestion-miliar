@@ -10,7 +10,7 @@ export default function VehiculosInfo(state = initialState, action) {
         case GET_VEHICULO:
             return {
                 ...state,
-                soldier: action.payload
+                vehiculos: action.payload
             }
         case GET_VEHICULO_ERROR:
             return { ...state, error: action.payload, loading: false };

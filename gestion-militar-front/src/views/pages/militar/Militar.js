@@ -19,7 +19,6 @@ const Militar = () => {
 
 
     const soldiers = useSelector((state) => state.soldiers.soldier)
-    console.log(soldiers)
 
     return (
         <div>

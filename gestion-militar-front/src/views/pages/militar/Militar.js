@@ -44,7 +44,7 @@ const Militar = () => {
                 </thead>
                 <tbody>
                     {soldiers.length === 0
-                        ? <p>No hay militares</p>
+                        ? <h5>No hay militares</h5>
                         : soldiers.map((soldier) => (
                             <tr>
                                 <td>{soldier.nombre}</td>

@@ -38,7 +38,7 @@ const Lider = () => {
                 </thead>
                 <tbody>
                     {lideres.length === 0
-                        ? <p>No hay militares</p>
+                        ? <h5>No hay lideres</h5>
                         : lideres.map((lider) => (
                             <tr>
                                 <td>{lider.nombre}</td>

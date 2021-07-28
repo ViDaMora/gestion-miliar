@@ -16,11 +16,11 @@ export function liderAction(){
     }
 }
 
-export function crearLiderAction(soldier){
+export function crearLiderAction(lider){
     return async (dispatch) =>{
         dispatch(crearLider())
         try {
-            await SoldierAxios.post('/lider', soldier);
+            await SoldierAxios.post('/lider', lider);
             alert("Se ha creado correctamente el militar");
         } catch (error) {
             dispatch(crearLiderError(true));

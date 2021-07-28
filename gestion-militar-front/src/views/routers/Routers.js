@@ -37,7 +37,6 @@ class Routers extends Component {
     }
     
     render() {
-        console.log(this.state.authenticated);
         return (
             <Router>
                 <Switch>

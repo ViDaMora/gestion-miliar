@@ -9,5 +9,10 @@ module.exports = class{
     delete(id){
         throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
     }
+
+    findByIdVehiculo(idVehiculo){
+        throw new Error('ERR_METHOD_NOT_IMPLEMENTED');
+    }
+
 }
 

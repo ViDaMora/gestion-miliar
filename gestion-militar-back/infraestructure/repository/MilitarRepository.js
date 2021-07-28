@@ -27,6 +27,10 @@ class MilitarRepositoryMongo extends MilitarRepository{
     async findById(id){
         return MilitarSchema.findOne({_id:id})
     }
+    
+    async findByCC(cc){
+        return MilitarSchema.findOne({cc:cc})
+    }
 
     async findAll(){
         return MilitarSchema.find({})
@@ -35,6 +39,11 @@ class MilitarRepositoryMongo extends MilitarRepository{
 
     async findByEmail(email){
         return MilitarSchema.findOne({email:email})
+    }
+
+    
+    async updateEstado(cc){
+        return MilitarSchema.updateOne({cc:cc},{activo:true})
     }
 
 }

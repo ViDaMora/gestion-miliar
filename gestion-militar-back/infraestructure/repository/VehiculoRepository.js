@@ -27,5 +27,13 @@ class VehiculoRepositoryMongo extends VehiculoRepository{
         return VehiculoSchema.findOne({_id:id})
     }
 
+<<<<<<< HEAD
+   
+=======
+    async findAll(){
+        return VehiculoSchema.find({})
+    }
+
+>>>>>>> 7bf6e620b6947f879947acf61d8a6c1a535eedd6
 }
 module.exports = {VehiculoRepositoryMongo}

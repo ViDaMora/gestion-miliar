@@ -1,6 +1,5 @@
 const cadenaMando = require('../CadenaMando')
 const Unidad = require('../../../domain/Unidad/Unidad')
-const Militar = require('../../../domain/Militar/Militar')
 
 async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc){
 
@@ -21,7 +20,6 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc)
     if(militar.activo){
         return{
                 errorMessage: "El militar ya esta asignado a otra unidad",succes:false
-    
         }
     }
 

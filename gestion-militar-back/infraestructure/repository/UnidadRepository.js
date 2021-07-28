@@ -16,15 +16,22 @@ class UnidadRepositoryMongo extends UnidadRepository{
         return new Unidad(mongoUnidad._id,mongoUnidad.tipoUnidad,mongoUnidad.encargado,mongoUnidad.asignada,mongoUnidad.militares,mongoUnidad.vehiculos)
     }
 
-    //AREGLAR ESTO
     async asignarMilitar(unidadId,militar){
-        const unidad = await UnidadSchema.updateOne({_id:unidadId}, {$push:{militares:militar}})
-        return new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos)
+        const unidad = await UnidadSchema.findOne({_id:unidadId})
+        unidad.militares.push(militar)
+        const militares=  await unidad.save()
+       return {message:"Militar asignado correctamente",militares:militares}
+
     }
 
     async findById(unidadId){
         const unidad = await UnidadSchema.findOne({_id:unidadId})
         return new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos)
+    }
+
+    async findAll(){
+        const unidades = await UnidadSchema.find({})
+        return unidades.map(unidad => new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos))
     }
 
 }

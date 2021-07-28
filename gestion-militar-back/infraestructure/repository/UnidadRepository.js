@@ -39,5 +39,15 @@ class UnidadRepositoryMongo extends UnidadRepository{
     }
 
     
+    async findById(unidadId){
+        const unidad = await UnidadSchema.findOne({_id:unidadId})
+        return new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos)
+    }
+
+    async findAll(){
+        const unidades = await UnidadSchema.find({})
+        return unidades.map(unidad => new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos))
+    }
+
 }
 module.exports = {UnidadRepositoryMongo}

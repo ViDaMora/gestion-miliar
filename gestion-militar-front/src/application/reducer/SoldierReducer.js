@@ -10,7 +10,7 @@ export default function SoldierInfo(state = initialState, action) {
         case GET_SOLDIER:
             return {
                 ...state,
-                soldier: [...state.soldier, action.payload]
+                soldier: action.payload
             }
         case GET_SOLDIER_ERROR:
             return { ...state, error: action.payload, loading: false };

@@ -14,4 +14,4 @@ async function addUnidad (req,res){
 }
 
 
-module.exports ={Crear_Unidad}
+module.exports ={addUnidad}

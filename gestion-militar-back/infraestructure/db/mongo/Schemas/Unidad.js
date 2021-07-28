@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const MilitarSchema = require('./Militar')
 
 const UnidadSchema = mongoose.Schema({
 
@@ -6,13 +7,13 @@ const UnidadSchema = mongoose.Schema({
     tipoUnidad:{
         type:String,
         lowercase: true,
+        enum: {values:['terrestre', 'marítimo', 'aereo'], message: 'Tipo de Unidad no válido'},
         minLength: [2, 'La longitud minima de la unidad es 2'],
     },
 
     encargado:{
-        type:String,
-        lowercase: true,
-        minLength: [2, 'La longitud minima de la nacionalidad  es 2'],
+        type: Object,
+        required: [true, "Es necesario un encargado para crear una unidad"]
     },
 
     asignada:{

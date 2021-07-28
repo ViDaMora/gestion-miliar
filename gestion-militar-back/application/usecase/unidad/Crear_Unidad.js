@@ -4,9 +4,15 @@ const Militar = require('../../../domain/Militar/Militar')
 
 async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
 
-    if(cc){
+    if(!tipoUnidad){
+        return { 
+            errorMessage: "La unidad debe tener un tipo (aereo,maritimo,terrestre)"
+        }
+    }
+
+    if(!cc){
         return {
-            errorMessage: "para crear unidad es necesario la cedula del militar"
+            errorMessage: "Para crear unidad es necesario la cedula del militar"
         }
     }
 
@@ -14,7 +20,7 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
 
     if(!militar){
         return {
-            errorMessage: "militar no existe"
+            errorMessage: "Militar no existe"
         }
     }
 
@@ -25,18 +31,17 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
         }
     }
 
-    if(cadenaMando.get(militar.autoridad)<7){
+    if(cadenaMando.get(militar.autoridad)>7){
 
         return{
             errorMessage: "el militar no puede tener una autoridad menor a capitan",succes:false
     }
 
     }
-
     let unidad = new Unidad(null,tipoUnidad,militar,false,null,null)
+     let unidadNueva=await UnidadRepository.save(unidad)
     await MilitarRepository.updateEstado(cc)
-    return await UnidadRepository.save(unidad)
-
+    return unidadNueva
 
 }
 

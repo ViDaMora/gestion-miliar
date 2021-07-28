@@ -9,15 +9,12 @@ class UnidadRepositoryMongo extends UnidadRepository{
         super();
     }
     async save(unidad){
-        const {tipoUnidad,encargado,asignada,militares,vehiculos} = unidad
-        const mongoUnidad = new UnidadSchema({id,tipoUnidad,encargado,asignada,militares,vehiculos})
-        let res =await mongoUnidad.save()
-
+        const {tipoUnidad,encargado,asignada} = unidad
+        const mongoUnidad = new UnidadSchema({tipoUnidad,encargado,asignada})
+        console.log(mongoUnidad)
+        await mongoUnidad.save()
         return new Unidad(mongoUnidad._id,mongoUnidad.tipoUnidad,mongoUnidad.encargado,mongoUnidad.asignada,mongoUnidad.militares,mongoUnidad.vehiculos)
     }
-
-
-   
 
 }
 module.exports = {UnidadRepositoryMongo}

@@ -1,5 +1,7 @@
 let {CreateVehiculo} = require('../../../application/usecase/vehiculo/Guardar_Vehiculo')
 let {borrarVehiculo}=require('../../../application/usecase/vehiculo/Borrar_Vehiculo')
+
+
 let {VehiculoRepositoryMongo} = require('../../repository/VehiculoRepository')
 
 
@@ -22,6 +24,7 @@ async function deleteVehiculo(req,res){
         res.status(500).send(error);
     }
 }
+
 
 
 module.exports ={addVehiculo,deleteVehiculo}

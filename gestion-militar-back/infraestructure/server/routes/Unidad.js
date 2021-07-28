@@ -1,8 +1,11 @@
 const express = require('express');
 let router = express.Router();
-const {addUnidad} = require('../controller/UnidadController');
+const {addUnidad,addMilitar,añadirVehiculo} = require('../controller/UnidadController');
 
 router.post('/unidad',addUnidad)
+router.put('/unidad',addMilitar)
+router.patch('/unidad',añadirVehiculo)
+
 
 
 module.exports =router

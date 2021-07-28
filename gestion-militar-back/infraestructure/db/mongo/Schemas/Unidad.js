@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const MilitarSchema = require('./Militar')
 
 const UnidadSchema = mongoose.Schema({
 

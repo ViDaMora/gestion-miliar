@@ -9,7 +9,7 @@ async function Asignar_Vehiculo(idVehiculo,idUnidad,UnidadRepository,VehiculoRep
         }
     }
 
-    let vehiculo = await VehiculoRepository.findByIdVehiculo(idVehiculo)
+    let vehiculo = await VehiculoRepository.findById(idVehiculo)
 
     if(!vehiculo){
 
@@ -17,17 +17,15 @@ async function Asignar_Vehiculo(idVehiculo,idUnidad,UnidadRepository,VehiculoRep
             errorMessage: "El vehiculo no existe"
         }
     }
-
     let unidad=await UnidadRepository.findById(idUnidad)
-
-    if(vehiculo.tipoVehiculo!=unidad.tipounidad){
+    if(vehiculo.tipoVehiculo!=unidad.tipoUnidad){
         return { 
-            errorMessage: "No se permite asignar este vehiculo"
+            errorMessage: "No se permite asignar vehiculos " + vehiculo.tipoVehiculo + " a unidades de tipo " + unidad.tipounidad
         }
 
     }
     
-    let unidadNueva=await UnidadRepository.Asignar_Vehiculo(vehiculo,idUnidad)
+    let unidadNueva=await UnidadRepository.asignarVehiculo(vehiculo,idUnidad)
     return unidadNueva
 
     }

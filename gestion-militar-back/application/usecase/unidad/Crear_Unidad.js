@@ -2,7 +2,7 @@ const cadenaMando = require('../CadenaMando')
 const Unidad = require('../../../domain/Unidad/Unidad')
 const Militar = require('../../../domain/Militar/Militar')
 
-async function Crear_Unidad(tipoUnidad,UnidadRepository,MilitarRepository,cc){
+async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
 
     if(cc){
         return {
@@ -34,7 +34,7 @@ async function Crear_Unidad(tipoUnidad,UnidadRepository,MilitarRepository,cc){
     }
 
     let unidad = new Unidad(null,tipoUnidad,militar,false,null,null)
-    await MilitarRepository.updateEstado(militar._id)
+    await MilitarRepository.updateEstado(cc)
     return await UnidadRepository.save(unidad)
 
 

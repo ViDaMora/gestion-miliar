@@ -28,22 +28,20 @@ async function Asignar_Militar (cc,unidadId,UnidadRepository,MilitarRepository){
 
 
     let unidad = await UnidadRepository.findById(unidadId)
-    let militaresUnidad = unidad.militares
-    for(militarUnidad in militaresUnidad){
 
-        if(cadenaMando.get(militarUnidad.autoridad)< cadenaMando.get(militar.autoridad)){
+  
+        if(cadenaMando.get(unidad.encargado.autoridad)> cadenaMando.get(militar.autoridad)){
             return {
                 errorMessage: "Un militar de menor rango no puede dirigir militares superiores en autoridad",
                 success: false
             }
-    }
-    }
+       }
 
-    //await MilitarRepository.updateEstado(cc)
-    return await UnidadRepository.asignarMilitar(unidadId,militar)
-    
+
+    await MilitarRepository.updateEstado(cc)
+    let respuesta= await UnidadRepository.asignarMilitar(unidadId,militar)
+    return respuesta
 
 }
-
 
 module.exports = {Asignar_Militar}

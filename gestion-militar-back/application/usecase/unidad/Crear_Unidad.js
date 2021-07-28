@@ -1,6 +1,5 @@
 const cadenaMando = require('../CadenaMando')
 const Unidad = require('../../../domain/Unidad/Unidad')
-const Militar = require('../../../domain/Militar/Militar')
 
 async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc){
 

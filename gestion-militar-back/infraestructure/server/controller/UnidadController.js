@@ -17,11 +17,10 @@ async function addUnidad (req,res){
 
 
 async function addMilitar(req,res){
-
     try {
         const {cc,unidadId} = req.body
         let unidad = await Asignar_Militar(cc,unidadId,UnidadRepositoryMongo.prototype,MilitarRepositoryMongo.prototype)
-        return unidad
+        res.json(unidad)
     } catch (error) {
         res.status(500).send(error);
 

@@ -1,33 +1,41 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { soldierAction } from '../../../application/actions/SoldierAction'
 import Header from "../../components/Header";
+import ModalGlobal from '../../components/ModalGlobal'
+
+import { nameEditor } from '../utils';
+import { Button } from 'react-bootstrap';
 
 
 const Militar = () => {
 
     const dispatch = useDispatch();
 
-    // const listSoldier = () => {
-    //     dispatch(soldierAction());
-    // }
-
     useEffect(() => {
         const militares = () => dispatch(soldierAction());
         militares();
     }, [dispatch]);
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
 
     const soldiers = useSelector((state) => state.soldiers.soldier)
 
     return (
-        <div>
-
+        <>
             <Header />
             <br />
             <br />
             <br />
             <div className="container-fluid">
+                <Button variant="primary" onClick={handleShow}>
+                    Crear Militar
+                </Button>
+                <ModalGlobal handleClose={handleClose} show={show} showData={false} />
                 <table className="table table-striped border">
                     <thead className="table bg-dark table-dark">
                         <tr>
@@ -47,13 +55,13 @@ const Militar = () => {
                             ? <h5>No hay militares</h5>
                             : soldiers.map((soldier) => (
                                 <tr>
-                                    <td>{soldier.nombre}</td>
+                                    <td>{nameEditor(soldier?.nombre)}</td>
                                     <td>{soldier.cc}</td>
                                     <td>{soldier.email}</td>
-                                    <td>{soldier.nacionalidad}</td>
-                                    <td>{soldier.genero}</td>
+                                    <td>{nameEditor(soldier?.nacionalidad)}</td>
+                                    <td>{soldier?.genero?.toUpperCase()}</td>
                                     <td>{soldier.edad}</td>
-                                    <td>{soldier.autoridad}</td>
+                                    <td>{nameEditor(soldier?.autoridad)}</td>
                                     <td>{soldier.activo}</td>
                                     <td>
                                         <button className="btn btn-info">Editar</button>
@@ -64,7 +72,7 @@ const Militar = () => {
                     </tbody>
                 </table>
             </div>
-        </div>
+        </>
     )
 }
 

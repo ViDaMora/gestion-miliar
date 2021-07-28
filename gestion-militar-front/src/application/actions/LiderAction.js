@@ -1,16 +1,9 @@
 import { GET_LIDER, ADD_LIDER, ADD_LIDER_ERROR } from "../types/LiderTypes";
-import SoldierAxios from "../../infrastructure/services/api/axios";
-
-// export const GetSoldierInfo = (soldierInfo) => {
-//     return {
-//         type: GET_SOLDIER,
-//         payload: soldierInfo,
-//     };
-// };
+import EndPointAxios from "../../infrastructure/services/api/axios";
 
 export function liderAction(){
     return async (dispatch) =>{
-        const response = await SoldierAxios.get('/lider');
+        const response = await EndPointAxios.get('/lider');
         dispatch(listarLideres(response.data));
         console.log(response)
     }
@@ -20,8 +13,8 @@ export function crearLiderAction(lider){
     return async (dispatch) =>{
         dispatch(crearLider())
         try {
-            await SoldierAxios.post('/lider', lider);
-            alert("Se ha creado correctamente el militar");
+            await EndPointAxios.post('/lider', lider);
+            alert("Se ha creado correctamente el lider");
         } catch (error) {
             dispatch(crearLiderError(true));
         }

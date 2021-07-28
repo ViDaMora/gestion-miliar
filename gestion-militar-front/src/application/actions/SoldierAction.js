@@ -1,5 +1,5 @@
 import { GET_SOLDIER, ADD_SOLDIER, ADD_SOLDIER_ERROR } from "../types/SoldierTypes";
-import SoldierAxios from "../../infrastructure/services/api/axios";
+import EndPointAxios from "../../infrastructure/services/api/axios";
 
 // export const GetSoldierInfo = (soldierInfo) => {
 //     return {
@@ -10,7 +10,7 @@ import SoldierAxios from "../../infrastructure/services/api/axios";
 
 export function soldierAction(){
     return async (dispatch) =>{
-        const response = await SoldierAxios.get('/militar');
+        const response = await EndPointAxios.get('/militar');
         dispatch(listSoldier(response.data));
         console.log(response)
     }
@@ -20,7 +20,7 @@ export function createSoldierAction(soldier){
     return async (dispatch) =>{
         dispatch(createSoldier())
         try {
-            await SoldierAxios.post('/militar', soldier);
+            await EndPointAxios.post('/militar', soldier);
             alert("Se ha creado correctamente el militar");
         } catch (error) {
             dispatch(createSoldierError(true));

@@ -23,13 +23,13 @@ const UnidadSchema = mongoose.Schema({
     },
 
     militares:{
-        type:Array,
+        type:[Object],
         lowercase: true,
           
     },
  
     vehiculos:{
-        type:Array,
+        type:[Object],
         lowercase: true,
     },
     

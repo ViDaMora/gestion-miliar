@@ -38,9 +38,10 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
     }
 
     }
-    let unidad = new Unidad(null,tipoUnidad,militar,false,null,null)
-     let unidadNueva=await UnidadRepository.save(unidad)
     await MilitarRepository.updateEstado(cc)
+    militar.activo=true
+    let unidad = new Unidad(null,tipoUnidad,militar,false,null,null)
+    let unidadNueva=await UnidadRepository.save(unidad)
     return unidadNueva
 
 }

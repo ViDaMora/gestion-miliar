@@ -11,10 +11,17 @@ class UnidadRepositoryMongo extends UnidadRepository{
     async save(unidad){
         const {tipoUnidad,encargado,asignada} = unidad
         const mongoUnidad = new UnidadSchema({tipoUnidad,encargado,asignada})
-        console.log(mongoUnidad)
         await mongoUnidad.save()
         return new Unidad(mongoUnidad._id,mongoUnidad.tipoUnidad,mongoUnidad.encargado,mongoUnidad.asignada,mongoUnidad.militares,mongoUnidad.vehiculos)
     }
+
+     async Asignar_Vehiculo(vehiculo,idUnidad){
+    
+            return UnidadSchema.updateOne({cc:cc},{idUnidad:idUnidad}{vehiculo:vehiculo})
+        
+    }
+
+
 
 }
 module.exports = {UnidadRepositoryMongo}

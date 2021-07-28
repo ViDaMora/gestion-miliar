@@ -43,7 +43,7 @@ class MilitarRepositoryMongo extends MilitarRepository{
 
     
     async updateEstado(cc){
-        return MilitarSchema.update({cc:cc},{activo:true})
+        return MilitarSchema.updateOne({cc:cc},{activo:true})
     }
 
 }

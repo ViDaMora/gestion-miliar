@@ -8,10 +8,9 @@ const Militar = () => {
 
     const dispatch = useDispatch();
 
-    const listSoldier = () => {
-        dispatch(soldierAction());
-    }
-
+    // const listSoldier = () => {
+    //     dispatch(soldierAction());
+    // }
 
     useEffect(() => {
         const militares = () => dispatch(soldierAction());
@@ -29,7 +28,7 @@ const Militar = () => {
             <br />
             <br />
             <br />
-            <table className="table">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Nombre</th>
@@ -40,6 +39,7 @@ const Militar = () => {
                         <th scope="col">Edad</th>
                         <th scope="col">Autoridad</th>
                         <th scope="col">Estado</th>
+                        <th scope="col">Acción</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,6 +55,10 @@ const Militar = () => {
                                 <td>{soldier.edad}</td>
                                 <td>{soldier.autoridad}</td>
                                 <td>{soldier.activo}</td>
+                                <td>
+                                    <button className="btn btn-info">Editar</button>
+                                    <button className="btn btn-danger">Borrar</button>
+                                </td>
                             </tr>
                         ))}
                 </tbody>

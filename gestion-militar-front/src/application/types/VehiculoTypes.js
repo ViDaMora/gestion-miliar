@@ -1,0 +1,2 @@
+export const GET_VEHICULO = "GET_VEHICULO";
+export const GET_VEHICULO_ERROR = "GET_VEHICULO_ERROR";

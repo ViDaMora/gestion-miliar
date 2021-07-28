@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux';
+import SoldierInfo from './SoldierReducer';
 
-export default combineReducers({
+const reducer = combineReducers({
+    soldiers: SoldierInfo,
+})
 
-});
+export default reducer;

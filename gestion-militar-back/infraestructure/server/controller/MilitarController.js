@@ -36,5 +36,4 @@ async function getMilitares(req,res){
 
 
 
-
 module.exports ={addMilitar,deleteMilitar,getMilitares}

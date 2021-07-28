@@ -1,12 +1,12 @@
-async function Retirar_Lider(id,LiderRepository){
-    let liderExist = await LiderRepository.findById(id)
+async function Retirar_Lider(cc,LiderRepository){
+    let liderExist = await LiderRepository.findByCC(cc)
+
     if(!liderExist){
         return {errorMessage: "Lider no encontrado",
                  succes: false}
     }
-     let newLider= await LiderRepository.updateActive(id)
+     await LiderRepository.updateActive(cc)
      return {message: "Lider retirado con exito",
-            lider: newLider,
             succes: true}
 }
 

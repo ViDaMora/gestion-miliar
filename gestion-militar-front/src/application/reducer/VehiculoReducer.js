@@ -1,18 +1,18 @@
-import { GET_SOLDIER, GET_SOLDIER_ERROR } from '../types/SoldierTypes';
+import { GET_VEHICULO, GET_VEHICULO_ERROR } from '../types/VehiculoTypes';
 
 const initialState = {
-    soldier: [],
+    vehiculos: [],
     error: null,
 }
 
-export default function SoldierInfo(state = initialState, action) {
+export default function VehiculosInfo(state = initialState, action) {
     switch (action.type) {
-        case GET_SOLDIER:
+        case GET_VEHICULO:
             return {
                 ...state,
                 soldier: action.payload
             }
-        case GET_SOLDIER_ERROR:
+        case GET_VEHICULO_ERROR:
             return { ...state, error: action.payload, loading: false };
         default:
             return state

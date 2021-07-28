@@ -1,33 +1,23 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { GetSoldierInfo } from "../../../application/actions/SoldierAction";
+import React from "react";
 import Header from "../../components/Header";
 
 
-class Home extends Component {
+function Home() {
 
-    async componentDidMount() {
-        this.props.GetSoldierInfo()
-    }
+    return (
+        <div>
+            <Header />
 
-    render() {
-
-        return (
-            <>
-                <Header />
-                <div className="container">
-
-                </div>
-            </>
-        )
-    }
+        </div>
+    )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        GetSoldierInfo: () => dispatch(GetSoldierInfo()),
-    }
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         GetSoldierInfo: () => dispatch(GetSoldierInfo()),
+//     }
 
-}
+// }
 
-export default connect(null, mapDispatchToProps)(Home);
+export default Home;
+// export default connect(null, mapDispatchToProps)(Home);

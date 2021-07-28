@@ -1,0 +1,2 @@
+export const GET_UNIDAD = "GET_UNIDAD";
+export const GET_UNIDAD_ERROR = "GET_UNIDAD_ERROR";

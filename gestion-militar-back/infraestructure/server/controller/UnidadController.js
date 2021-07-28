@@ -1,7 +1,9 @@
 let {Crear_Unidad} = require('../../../application/usecase/unidad/Crear_Unidad')
 let {Asignar_Militar} = require('../../../application/usecase/unidad/Asignar_Militar')
+let {Obtener_Unidades} = require('../../../application/usecase/unidad/Obtener_Unidades')
 let {UnidadRepositoryMongo} = require('../../repository/UnidadRepository')
 let {MilitarRepositoryMongo}= require('../../repository/MilitarRepository')
+
 
 async function addUnidad (req,res){
     try{
@@ -25,7 +27,18 @@ async function addMilitar(req,res){
         res.status(500).send(error);
 
     }
+
 }
 
 
-module.exports ={addUnidad,addMilitar}
+async function getUnidades(req,res){
+    try{
+        let unidades=await Obtener_Unidades(UnidadRepositoryMongo.prototype)
+        res.json(unidades)
+    }catch(error){
+        res.status(500).send(error);
+    }
+}
+
+
+module.exports ={addUnidad,addMilitar,getUnidades}

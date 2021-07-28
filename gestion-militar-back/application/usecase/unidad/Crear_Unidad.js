@@ -20,7 +20,6 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc)
     if(militar.activo){
         return{
                 errorMessage: "El militar ya esta asignado a otra unidad",succes:false
-    
         }
     }
 

@@ -104,6 +104,18 @@ const MilitarForm = ({ handleClose, showData, soldiers, id }) => {
                     <Form.Label>Autoridad</Form.Label>
                     <Form.Control type="text" placeholder="Autoridad" name="autoridad" value={autoridad} onChange={handleChange} required />
                 </Form.Group>
+                <Form.Select aria-label="Default select example">
+                    <option>Seleccione una opción</option>
+                    <option value="1">General</option>
+                    <option value="2">Teniente</option>
+                    <option value="3">Mayor</option>
+                    <option value="3">Brigadier</option>
+                    <option value="3">Coronel</option>
+                    <option value="3">Comandante</option>
+                    <option value="3">Capitan</option>
+                    <option value="3">Sargento</option>
+                    <option value="3">Cabo</option>
+                </Form.Select>
             </Form>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

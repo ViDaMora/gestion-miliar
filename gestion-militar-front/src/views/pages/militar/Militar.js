@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteSoldierAction, soldierAction, updateSoldierAction } from '../../../application/actions/SoldierAction'
+import { deleteSoldierAction, soldierAction, AsignarLiderAction } from '../../../application/actions/SoldierAction'
 import Header from "../../components/Header";
 import ModalGlobal from '../../components/ModalGlobal'
 
@@ -38,10 +38,8 @@ const Militar = () => {
         handleShow()
     }
 
-    const editStatus = (soldier) => {
-        dispatch(updateSoldierAction(soldier.id, {
-            ...soldier, activo: true
-        }));
+    const asignarLider = async (cc) => {
+        dispatch(AsignarLiderAction(cc));
     }
 
 
@@ -97,7 +95,7 @@ const Militar = () => {
                                     <td>
                                         {
                                             soldier.activo !== true &&
-                                            <button className="btn btn-primary" onClick={() => editStatus(soldier)}>Asignar</button>
+                                            <button className="btn btn-primary" onClick={() => asignarLider(soldier.cc)}>Asignar</button>
                                         }
                                     </td>
                                 </tr>

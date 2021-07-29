@@ -1,7 +1,6 @@
 const Operacion = require('../../domain/Operacion/Operacion');
 const OperacionSchema = require('../db/mongo/Schemas/Operacion')
 const OperacionRepository = require('../../domain/Operacion/OperacionRepository');
-//const MilitarEschema = require('../db/mongo/Schemas/Militar');
 
 class OperacionRepositoryMongo extends OperacionRepository{
 

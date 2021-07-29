@@ -1,7 +1,7 @@
 const cadenaMando = require('../CadenaMando')
 
 
-async function Asignar_Unidad (unidadId, opeacionId,OperacionRepository,UnidadRepository){
+async function Asignar_Unidad (unidadId, operacionId,OperacionRepository,UnidadRepository){
 
 
     if(!unidadId){
@@ -11,7 +11,7 @@ async function Asignar_Unidad (unidadId, opeacionId,OperacionRepository,UnidadRe
         }
     }
     let unidad = await UnidadRepository.findById(unidadId)
-    let operacion = await OperacionRepository.findById(opeacionId)
+    let operacion = await OperacionRepository.findById(operacionId)
 
     if(!unidad){
         return {
@@ -27,7 +27,7 @@ async function Asignar_Unidad (unidadId, opeacionId,OperacionRepository,UnidadRe
         }
     }
 
-    if(cadenaMando.get(unidad.encargado.autoridad)>cadenaMando.get(operacion.lider.autoridad)){
+    if(cadenaMando.get(unidad.encargado.autoridad)<cadenaMando.get(operacion.lider.autoridad)){
         return {
             errorMessage: "El lider de la unidad militar no debe tener mayor autoridad que el lider de la operacion",
             success: false

@@ -34,9 +34,8 @@ async function Asignar_Lider (cc,operacionId,OperacionRepository,LiderRepository
    }
 
     
-    //let operacion = await OperacionRepository.findById(opeacionId)
+ 
 
-    await LiderRepository.updateEstado(cc)
     let respuesta= await OperacionRepository.asignarLider(operacionId,lider)
     return respuesta
 

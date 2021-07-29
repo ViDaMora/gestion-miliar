@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const SoldierAxios = axios.create({
-    baseURL: 'http://localhost:3000/militarapi/v1/'
+const EndPointAxios = axios.create({
+    baseURL: 'https://militar-api-gestion.herokuapp.com/militarapi/v1'
 });
 
-export default SoldierAxios;
+export default EndPointAxios;

@@ -10,7 +10,7 @@ export default function UnidadesInfo(state = initialState, action) {
         case GET_UNIDAD:
             return {
                 ...state,
-                soldier: action.payload
+                unidades: action.payload
             }
         case GET_UNIDAD_ERROR:
             return { ...state, error: action.payload, loading: false };

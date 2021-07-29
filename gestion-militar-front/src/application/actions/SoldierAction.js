@@ -1,29 +1,55 @@
-import { GET_SOLDIER, ADD_SOLDIER, ADD_SOLDIER_ERROR } from "../types/SoldierTypes";
-import SoldierAxios from "../../infrastructure/services/api/axios";
+import { GET_SOLDIER, ADD_SOLDIER, ADD_SOLDIER_ERROR, DELETE_SOLDIER, DELETE_SOLDIER_ERROR, UPDATE_SOLDIER } from "../types/SoldierTypes";
+import EndPointAxios from "../../infrastructure/services/api/axios";
 
-// export const GetSoldierInfo = (soldierInfo) => {
-//     return {
-//         type: GET_SOLDIER,
-//         payload: soldierInfo,
-//     };
-// };
-
-export function soldierAction(){
-    return async (dispatch) =>{
-        const response = await SoldierAxios.get('/militar');
+export function soldierAction() {
+    return async (dispatch) => {
+        const response = await EndPointAxios.get('/militar');
         dispatch(listSoldier(response.data));
-        console.log(response)
     }
 }
 
-export function createSoldierAction(soldier){
-    return async (dispatch) =>{
-        dispatch(createSoldier())
+export function createSoldierAction(soldier) {
+    return async (dispatch) => {
         try {
-            await SoldierAxios.post('/militar', soldier);
-            alert("Se ha creado correctamente el militar");
+            const resp = await EndPointAxios.post('/militar', soldier);
+            if (resp.data.errorMessage) {
+                alert(resp.data.errorMessage)
+            }
+            else {
+                dispatch(createSoldier(resp.data));
+                alert("Militar creado correctamente");
+            }
         } catch (error) {
             dispatch(createSoldierError(true));
+        }
+    }
+}
+
+export function deleteSoldierAction(id) {
+    return async (dispatch) => {
+        let body = {id: id}
+        try {
+            const resp = await EndPointAxios.delete('/militar', {data:body});
+            if (resp.data.errorMessage) {
+                alert(resp.data.errorMessage)
+            }
+            else {
+                dispatch(deleteSoldier(id))
+                alert("Militar eliminado correctamente");
+            }
+        } catch (error) {
+            dispatch(deleteSoldierError())
+        }
+    }
+}
+
+export function AsignarLiderAction(cc) {
+    return async (dispatch) => {
+        try {   
+           await EndPointAxios.post('/lider',{cc:cc});
+            dispatch(updateSoldier(cc))
+        } catch (error) {
+            dispatch(updateSoldierError())
         }
     }
 }
@@ -33,12 +59,32 @@ const listSoldier = (response) => ({
     payload: response
 });
 
-const createSoldier = () => ({
+const createSoldier = (soldier) => ({
     type: ADD_SOLDIER,
-    payload: true
+    payload: soldier
 });
 
-const createSoldierError = (error) =>({
+const createSoldierError = (error) => ({
     type: ADD_SOLDIER_ERROR,
+    payload: error
+});
+
+const deleteSoldier = (id) => ({
+    type: DELETE_SOLDIER,
+    payload: id
+});
+
+const deleteSoldierError = (error) => ({
+    type: DELETE_SOLDIER_ERROR,
+    payload: error
+});
+
+const updateSoldier = (body) => ({
+    type: UPDATE_SOLDIER,
+    payload: body
+});
+
+const updateSoldierError = (error) => ({
+    type: DELETE_SOLDIER,
     payload: error
 });

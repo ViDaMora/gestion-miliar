@@ -1,23 +1,34 @@
 import React from "react";
 import Header from "../../components/Header";
 
+import { Carousel } from "bootstrap";
 
-function Home() {
+
+const Home = () => {
 
     return (
-        <div>
+        <>
             <Header />
-
-        </div>
-    )
+            <br />
+            <br />
+            <br />
+            <div className="container">
+                <div id="carouselExampleSlidesOnly" className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src="..." className="d-block w-100" alt="..." />
+                        </div>
+                        <div className="carousel-item">
+                            <img src="..." className="d-block w-100" alt="..." />
+                        </div>
+                        <div className="carousel-item">
+                            <img src="..." className="d-block w-100" alt="..." />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         GetSoldierInfo: () => dispatch(GetSoldierInfo()),
-//     }
-
-// }
-
 export default Home;
-// export default connect(null, mapDispatchToProps)(Home);

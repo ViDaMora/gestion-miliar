@@ -28,13 +28,10 @@ const Operacion = () => {
                     <thead className="table bg-dark table-dark">
                         <tr>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Cédula</th>
-                            <th scope="col">Nacionalidad</th>
-                            <th scope="col">Género</th>
-                            <th scope="col">Edad</th>
-                            <th scope="col">Autoridad</th>
-                            <th scope="col">Estado</th>
-                            <th scope="col">Acción</th>
+                            <th scope="col">Lider</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">País</th>
+                            <th scope="col">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,12 +40,9 @@ const Operacion = () => {
                             : operaciones.map((operacion) => (
                                 <tr>
                                     <td>{operacion.nombre}</td>
-                                    <td>{operacion.cc}</td>
-                                    <td>{operacion.nacionalidad}</td>
-                                    <td>{operacion.genero}</td>
-                                    <td>{operacion.edad}</td>
-                                    <td>{operacion.autoridad}</td>
-                                    <td>{operacion.activo}</td>
+                                    <td>{operacion.lider.nombre}</td>
+                                    <td>{operacion.descripcion}</td>
+                                    <td>{operacion.pais}</td>
                                     <td>
                                         <button className="btn btn-info">Editar</button>
                                         <button className="btn btn-danger">Borrar</button>

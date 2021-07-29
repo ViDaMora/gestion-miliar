@@ -5,7 +5,8 @@ import MilitarForm from './forms/MilitarForm';
 import VehiculoAsignar from './forms/VehiculoAsignar';
 import VehiculoForm from './forms/VehiculoForm';
 
-const ModalGlobal = ({ handleClose, show, showData, soldiers, vehiculos, id, showMilitar = false, showVehiculo = false, showPerfil = false, showMilitarTable = false, showVehiculoTable=false }) => {
+const ModalGlobal = ({ handleClose, show, showData, soldiers, vehiculos, id, showMilitar = false,
+    showVehiculo = false, showPerfil = false, showMilitarTable = false, showVehiculoTable = false }) => {
 
     return (
         <>

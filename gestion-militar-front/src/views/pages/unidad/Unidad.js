@@ -19,14 +19,21 @@ const Unidad = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    //Modal militar
+    const [showMilitarTable, setShowMilitarTable] = useState(false);
     const handleClickMilitar = () => {
+        setShowMilitarTable(true)
+        setShowVehiculoTable(false)
         handleShow()
     }
 
+    //Modal vehiculo
+    const [showVehiculoTable, setShowVehiculoTable] = useState(false);
     const handleClickVehiculo = () => {
+        setShowVehiculoTable(true)
+        setShowMilitarTable(false)
         handleShow()
     }
-
 
     const unidades = useSelector((state) => state.unidades.unidades)
     const soldiers = useSelector((state) => state.soldiers.soldier)
@@ -39,7 +46,7 @@ const Unidad = () => {
             <br />
             <br />
             <div className="container-fluid">
-                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} showMilitarTable={true} showVehiculoTable={true} />
+                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} showMilitarTable={showMilitarTable} showVehiculoTable={showVehiculoTable} />
                 <table className="table table-striped border">
                     <thead className="table bg-dark table-dark">
                         <tr>

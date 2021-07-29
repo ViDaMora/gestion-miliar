@@ -31,6 +31,7 @@ class LiderRepositoryMongo extends LiderRepository{
     }
 
     async findByCC(cc){
+        console.log(cc)
         return LiderSchema.findOne({cc:cc})
     }
 

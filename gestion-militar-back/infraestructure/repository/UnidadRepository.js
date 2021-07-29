@@ -11,8 +11,8 @@ class UnidadRepositoryMongo extends UnidadRepository{
     async save(unidad){
         const {tipoUnidad,encargado,asignada} = unidad
         const mongoUnidad = new UnidadSchema({tipoUnidad,encargado,asignada})
-        await mongoUnidad.save()
-        return new Unidad(mongoUnidad._id,mongoUnidad.tipoUnidad,mongoUnidad.encargado,mongoUnidad.asignada,mongoUnidad.militares,mongoUnidad.vehiculos)
+        let unidadNueva=await mongoUnidad.save()
+        return new Unidad(unidadNueva._id,unidadNueva.tipoUnidad,unidadNueva.encargado,unidadNueva.asignada,unidadNueva.militares,unidadNueva.vehiculos)
     }
 
 

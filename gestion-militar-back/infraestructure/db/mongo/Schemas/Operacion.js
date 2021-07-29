@@ -4,7 +4,7 @@ const OperacionSchema = mongoose.Schema({
 
 
     unidades:{
-        type:[Object],
+        type:Array,
         lowercase: true,
     },
 

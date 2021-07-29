@@ -3,7 +3,7 @@ const cadenaMando = require('../CadenaMando')
 
 async function Asignar_Unidad (unidadId, operacionId,OperacionRepository,UnidadRepository){
 
-
+    
     if(!unidadId){
         return {
             errorMessage: "Debe ingresar id",
@@ -12,6 +12,8 @@ async function Asignar_Unidad (unidadId, operacionId,OperacionRepository,UnidadR
     }
     let unidad = await UnidadRepository.findById(unidadId)
     let operacion = await OperacionRepository.findById(operacionId)
+    
+
 
     if(!unidad){
         return {
@@ -34,9 +36,9 @@ async function Asignar_Unidad (unidadId, operacionId,OperacionRepository,UnidadR
         }
     }
 
-
+    
     await UnidadRepository.updateEstado(unidadId)
-    let respuesta= await OperacionRepository.asignarUnidad(operacionId,unidad)
+    let respuesta= await OperacionRepository.asignarUnidad(unidadId,operacionId)
     return respuesta
 
 }

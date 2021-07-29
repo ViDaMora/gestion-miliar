@@ -8,7 +8,7 @@ async function Crear_Operacion(liderCC,descripcion,pais,nombre,OperacionReposito
     let lider = await LiderRepository.findByCC(liderCC)
 
     if(!lider){
-        return {errorMessage: "Para crear una operacion require un lider, ingrese un lider cc valido",
+        return {errorMessage: "Para crear una operacion require un lider, el lider ingresado no existe",
                 succes:false}
     }
    /* if(lider){
@@ -29,7 +29,7 @@ async function Crear_Operacion(liderCC,descripcion,pais,nombre,OperacionReposito
         return {errorMessage: "El lider ya lidera una operacion", succes:false}
     }
     lider.activo= true
-    let operacion = new Operacion(null,null,lider,descripcion,pais,nombre)
+    let operacion = new Operacion(null,[],lider,descripcion,pais,nombre)
     await LiderRepository.updateActivo(liderCC)
     return await OperacionRepository.save(operacion)
 }

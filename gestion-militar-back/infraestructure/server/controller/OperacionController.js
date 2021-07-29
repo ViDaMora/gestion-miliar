@@ -22,8 +22,8 @@ async function addOperacion (req,res){
 
 async function addUnidad(req,res){
     try {
-        const {operacionId,unidad} = req.body
-        let respuesta = await Asignar_Unidad(operacionId,unidad,OperacionRepositoryMongo.prototype,UnidadRepositoryMongo.prototype)
+        const {unidadId,operacionId} = req.body
+        let respuesta = await Asignar_Unidad(unidadId,operacionId,OperacionRepositoryMongo.prototype,UnidadRepositoryMongo.prototype)
         res.json(respuesta)
     } catch (error) {
         res.status(500).send(error);

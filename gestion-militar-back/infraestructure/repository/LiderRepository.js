@@ -34,8 +34,8 @@ class LiderRepositoryMongo extends LiderRepository{
         return LiderSchema.findOne({cc:cc})
     }
 
-    async updateActive(cc){
-        return LiderSchema.update({cc:cc},{activo:false})
+    async updateActivo(cc){
+        return LiderSchema.updateOne({cc:cc},{activo:true})
     }
 
 }

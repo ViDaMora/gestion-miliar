@@ -3,11 +3,16 @@ const Operacion = require('../../../domain/Operacion/Operacion')
 
 
 // OP NO TRIVIAL
-async function Crear_Operacion(unidadId,lider,descripcion,pais,nombre,UnidadRepository,OperacionRepository,LiderRepository){
+async function Crear_Operacion(liderCC,descripcion,pais,nombre,OperacionRepository,LiderRepository){
 
+    let lider = await LiderRepository.findByCC(liderCC)
 
-    if(lider){
-        for(const unidadid in unidadId){
+    if(!lider){
+        return {errorMessage: "Para crear una operacion require un lider, ingrese un lider cc valido",
+                succes:false}
+    }
+   /* if(lider){
+        for(const unidadid in unidades){
             let unidadAsignada = await UnidadRepository.findById(unidadid)
             if(cadenaMando.get(unidadAsignada.encargado.autoridad)<cadenaMando.get(lider.autoridad)){
                 return {
@@ -15,21 +20,17 @@ async function Crear_Operacion(unidadId,lider,descripcion,pais,nombre,UnidadRepo
                 }
             }
         }
-    }
+    }*/
 
-    let operacion = new Operacion(null,unidadId,lider,descripcion,pais,nombre)
 
-    let liderExiste = await LiderRepository.findById(lider.id)
-    if(!liderExiste){
-        return {
-            errorMessage: "El lider que intenta asignar no existe",
-            succes:false
-        }
+
+  
+    if(lider.activo){
+        return {errorMessage: "El lider ya lidera una operacion", succes:false}
     }
-    if(liderExiste.activo){
-        return {errorMessage: "El lider ya esta asignado a una unidad", succes:false}
-    }
-    await LiderRepository.updateActivo(lider.id)
+    lider.activo= true
+    let operacion = new Operacion(null,null,lider,descripcion,pais,nombre)
+    await LiderRepository.updateActivo(liderCC)
     return await OperacionRepository.save(operacion)
 }
 

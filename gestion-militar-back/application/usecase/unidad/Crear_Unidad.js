@@ -23,7 +23,7 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
         }
     }
 
-    if(cadenaMando.get(militar.autoridad)<7){
+    if(cadenaMando.get(militar.autoridad)>7){
 
         return{
             errorMessage: "el militar no puede tener una autoridad menor a capitan",succes:false

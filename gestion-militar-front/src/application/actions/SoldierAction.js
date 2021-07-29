@@ -8,20 +8,24 @@ import EndPointAxios from "../../infrastructure/services/api/axios";
 //     };
 // };
 
-export function soldierAction(){
-    return async (dispatch) =>{
+export function soldierAction() {
+    return async (dispatch) => {
         const response = await EndPointAxios.get('/militar');
         dispatch(listSoldier(response.data));
-        console.log(response)
     }
 }
 
-export function createSoldierAction(soldier){
-    return async (dispatch) =>{
-        dispatch(createSoldier())
+export function createSoldierAction(soldier) {
+    return async (dispatch) => {
         try {
-            await EndPointAxios.post('/militar', soldier);
-            alert("Se ha creado correctamente el militar");
+            const resp = await EndPointAxios.post('/militar', soldier);
+            if (resp.data.errorMessage) {
+                alert(resp.data.errorMessage)
+            }
+            else {
+                dispatch(createSoldier(resp.data));
+                alert("Se ha creado correctamente el militar");
+            }
         } catch (error) {
             dispatch(createSoldierError(true));
         }
@@ -33,12 +37,12 @@ const listSoldier = (response) => ({
     payload: response
 });
 
-const createSoldier = () => ({
+const createSoldier = (soldier) => ({
     type: ADD_SOLDIER,
-    payload: true
+    payload: soldier
 });
 
-const createSoldierError = (error) =>({
+const createSoldierError = (error) => ({
     type: ADD_SOLDIER_ERROR,
     payload: error
 });

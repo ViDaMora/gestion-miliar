@@ -12,6 +12,7 @@ const createServer = async () => {
     app.use('/militarapi/v1',require('./routes/Militar'))
     app.use('/militarapi/v1',require('./routes/Lider'))
     app.use('/militarapi/v1',require('./routes/Unidad'))
+    app.use('/militarapi/v1',require('./routes/Operacion'))
     app.listen(PORT, () => {console.log(`Server listening on port http://localhost:${PORT}`)})
 }
 

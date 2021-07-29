@@ -24,7 +24,6 @@ async function deleteVehiculo(req,res){
     }
 }
 
-
 async function getAllVehiculos(req,res){
     try{
         let vehiculos=await  Obtener_Vehiculos(VehiculoRepositoryMongo.prototype)

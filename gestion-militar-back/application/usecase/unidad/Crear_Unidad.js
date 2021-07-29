@@ -1,7 +1,7 @@
 const cadenaMando = require('../CadenaMando')
 const Unidad = require('../../../domain/Unidad/Unidad')
 
-async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc){
+async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
 
     if(!cc){
         return {
@@ -23,18 +23,18 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository,cc)
         }
     }
 
-    if(cadenaMando.get(militar.autoridad)<7){
+    if(cadenaMando.get(militar.autoridad)>7){
 
         return{
             errorMessage: "el militar no puede tener una autoridad menor a capitan",succes:false
     }
 
     }
-
+    await MilitarRepository.updateEstado(cc)
+    militar.activo=true
     let unidad = new Unidad(null,tipoUnidad,militar,false,null,null)
-    await MilitarRepository.updateEstado(militar._id)
-    return await UnidadRepository.save(unidad)
-
+    let unidadNueva=await UnidadRepository.save(unidad)
+    return unidadNueva
 
 }
 

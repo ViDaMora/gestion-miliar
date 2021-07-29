@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVehiculos } from '../../../application/actions/VehiculoActions';
 import Header from "../../components/Header";
+
+import { Card, Button } from "react-bootstrap";
+import ModalGlobal from "../../components/ModalGlobal";
 
 const Vehiculo = () => {
     const vehiculos = useSelector((state) => state.vehiculos.vehiculos)
@@ -12,6 +15,15 @@ const Vehiculo = () => {
         vehiculos();
     }, [dispatch]);
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleClick = () => {
+        handleShow()
+    }
+
     return (
         <div>
 
@@ -19,28 +31,26 @@ const Vehiculo = () => {
             <br />
             <br />
             <br />
-            <div className="container-fluid">
-                {vehiculos.length === 0
-                    ? <h5>No hay vehículos</h5>
-                    : vehiculos.map((vehiculo) => (
-                        <div className="row">
-                            <div className="col-sm-6">
-                                <div className="card-home border">
-                                    <div>
-                                        <img src={vehiculo.url} className="image-card card-img-top" alt={vehiculo.tipoVehiculo} />
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 className="card-title">{vehiculo.tipoVehiculo}</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
+            <div className="container">
+                <Button variant="primary" onClick={() => handleClick()}>
+                    Crear Vehículo
+                </Button>
+                <ModalGlobal handleClose={handleClose} show={show}  showVehiculo={true} />
+                <div className="row">
+                    {vehiculos?.length === 0
+                        ? <h5>No hay vehículos</h5>
+                        : vehiculos.map((vehiculo) => (
+                            <Card style={{ width: '18rem' }}>
+                                <Card.Img variant="top" src={vehiculo.url} />
+                                <Card.Body>
+                                    <Card.Title>{vehiculo.tipoVehiculo}</Card.Title>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                </div>
             </div>
         </div>
-
     )
-
 }
 
 export default Vehiculo;

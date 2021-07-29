@@ -1,4 +1,4 @@
-import { GET_VEHICULO, GET_VEHICULO_ERROR } from '../types/VehiculoTypes';
+import { ADD_VEHICULO, GET_VEHICULO, GET_VEHICULO_ERROR } from '../types/VehiculoTypes';
 
 const initialState = {
     vehiculos: [],
@@ -14,6 +14,8 @@ export default function VehiculosInfo(state = initialState, action) {
             }
         case GET_VEHICULO_ERROR:
             return { ...state, error: action.payload, loading: false };
+        case ADD_VEHICULO:
+            return { ...state, vehiculos: [...state.vehiculos, action.payload] };
         default:
             return state
     }

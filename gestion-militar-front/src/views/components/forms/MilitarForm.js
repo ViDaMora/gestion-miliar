@@ -69,7 +69,6 @@ const MilitarForm = ({ handleClose, showData, soldiers, id }) => {
         setValidated(true);
         dispatch(createSoldierAction(formState));
         handleClose();
-        // window.location.reload();
     };
 
     return (

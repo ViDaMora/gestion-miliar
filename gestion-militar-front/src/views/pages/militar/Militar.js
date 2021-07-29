@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { soldierAction } from '../../../application/actions/SoldierAction'
+import { deleteSoldierAction, soldierAction, updateSoldierAction } from '../../../application/actions/SoldierAction'
 import Header from "../../components/Header";
 import ModalGlobal from '../../components/ModalGlobal'
 
@@ -22,6 +22,7 @@ const Militar = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    //Modal con data
     const [selectedId, setSelectedId] = useState(null);
     const [showData, setShowData] = useState(false);
     const editSubmit = (id) => {
@@ -30,11 +31,23 @@ const Militar = () => {
         handleShow()
     }
 
-    const handleClick = () =>{
+    //Modal vacio
+    const handleClick = () => {
         setSelectedId(null)
         setShowData(false)
         handleShow()
     }
+
+    const editStatus = (soldier) => {
+        dispatch(updateSoldierAction(soldier.id, {
+            ...soldier, activo: true
+        }))
+    }
+
+
+    const deleteSoldier = async (id) => {
+        dispatch(deleteSoldierAction(id))
+    };
 
     const soldiers = useSelector((state) => state.soldiers.soldier)
 
@@ -45,7 +58,7 @@ const Militar = () => {
             <br />
             <br />
             <div className="container-fluid">
-                <Button variant="primary" onClick={()=>handleClick()}>
+                <Button variant="primary" onClick={() => handleClick()}>
                     Crear Militar
                 </Button>
                 <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} id={selectedId} showData={showData} showMilitar={true} />
@@ -61,12 +74,13 @@ const Militar = () => {
                             <th scope="col">Autoridad</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Acción</th>
+                            <th scope="col">Asignar Lider</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {soldiers.length === 0
+                        {soldiers?.length === 0
                             ? <h5>No hay militares</h5>
-                            : soldiers.map((soldier) => (
+                            : soldiers?.map((soldier) => (
                                 <tr>
                                     <td>{nameEditor(soldier?.nombre)}</td>
                                     <td>{soldier.cc}</td>
@@ -75,10 +89,16 @@ const Militar = () => {
                                     <td>{soldier?.genero?.toUpperCase()}</td>
                                     <td>{soldier.edad}</td>
                                     <td>{nameEditor(soldier?.autoridad)}</td>
-                                    <td>{soldier.activo}</td>
+                                    <td>{soldier.activo ? "Si" : "No"}</td>
                                     <td>
                                         <button className="btn btn-info" onClick={() => editSubmit(soldier.id)}>Editar</button>
-                                        <button className="btn btn-danger">Borrar</button>
+                                        <button className="btn btn-danger" onClick={() => deleteSoldier(soldier.id)}>Borrar</button>
+                                    </td>
+                                    <td>
+                                        {
+                                            soldier.activo !== true &&
+                                            <button className="btn btn-primary" onClick={() => editStatus(soldier)}>Asignar</button>
+                                        }
                                     </td>
                                 </tr>
                             ))}

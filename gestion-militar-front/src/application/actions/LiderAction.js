@@ -14,7 +14,7 @@ export function crearLiderAction(lider){
         dispatch(crearLider())
         try {
             await EndPointAxios.post('/lider', lider);
-            alert("Se ha creado correctamente el lider");
+            alert("Lider asignado correctamente");
         } catch (error) {
             dispatch(crearLiderError(true));
         }

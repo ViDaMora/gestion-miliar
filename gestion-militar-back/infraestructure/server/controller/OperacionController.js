@@ -4,16 +4,15 @@ let {Obtener_Operaciones} = require('../../../application/usecase/operacion/Obte
 let {UnidadRepositoryMongo}= require('../../repository/UnidadRepository')
 let {OperacionRepositoryMongo}= require('../../repository/OperacionRepository')
 let {LiderRepositoryMongo}= require('../../repository/LiderRepository')
-const { Obtener_Vehiculos } = require('../../../application/usecase/vehiculo/Obtener_Vehiculos')
-
+let {Asignar_Lider} = require('../../../application/usecase/operacion/Asignar_Lider')
 
 
 
 async function addOperacion (req,res){
     try{
 
-        const {descripcion,pais,nombre,liderCC}=req.body
-        let operacion=await Crear_Operacion(liderCC,descripcion,pais,nombre,OperacionRepositoryMongo.prototype,LiderRepositoryMongo.prototype)
+        const {descripcion,pais,lidercc,nombre}=req.body
+        let operacion=await Crear_Operacion(lidercc,descripcion,pais,nombre,OperacionRepositoryMongo.prototype,LiderRepositoryMongo.prototype)
         res.json(operacion)
     }catch(error){
         res.status(500).send(error);
@@ -41,5 +40,17 @@ async function getAllOperaciones(req,res){
 }
 
 
+async function asignarLider(req,res){
+    try{
+        let {lidercc,operacionId}=req.body
+        let operacion = await Asignar_Lider(lidercc,operacionId,OperacionRepositoryMongo.prototype,LiderRepositoryMongo.prototype,UnidadRepositoryMongo.prototype)
+        res.json(operacion)
+    }
+    catch(error){
+        res.status(500).send(error);
+    }
+}
 
-module.exports = {addOperacion,addUnidad,getAllOperaciones}
+
+
+module.exports = {addOperacion,addUnidad,getAllOperaciones,asignarLider}

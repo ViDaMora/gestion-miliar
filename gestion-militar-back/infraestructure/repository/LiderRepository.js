@@ -31,13 +31,18 @@ class LiderRepositoryMongo extends LiderRepository{
     }
 
     async findByCC(cc){
-        console.log(cc)
-        return LiderSchema.findOne({cc:cc})
+        return await LiderSchema.findOne({cc:cc})
     }
 
     async updateActivo(cc){
         return LiderSchema.updateOne({cc:cc},{activo:true})
     }
+
+    async updateInactivo(cc){
+        return LiderSchema.updateOne({cc:cc},{activo:false})
+    }
+
+
 
 }
 module.exports = {LiderRepositoryMongo}

@@ -46,7 +46,7 @@ class UnidadRepositoryMongo extends UnidadRepository{
     }
 
     async updateEstado(unidadId){
-        return UnidadSchema.updateOne({unidadId:unidadId},{asignada:true})
+        return UnidadSchema.updateOne({_id:unidadId},{asignada:true})
     }
 
 }

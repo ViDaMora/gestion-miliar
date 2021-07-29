@@ -46,3 +46,4 @@ class MilitarRepositoryMongo extends MilitarRepository{
 
 }
 module.exports = {MilitarRepositoryMongo}
+

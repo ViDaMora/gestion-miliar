@@ -10,7 +10,6 @@ class OperacionRepositoryMongo extends OperacionRepository{
 
     async save(operacion){
         const {unidades,lider,descripcion,pais,nombre} = operacion
-        console.log(unidades)
         const mongoOperacion = new OperacionSchema({unidades,lider,descripcion,pais,nombre})
         let operacionCreada= await mongoOperacion.save()
         return new Operacion(operacionCreada._id, operacionCreada.descripcio, operacionCreada.lider, operacionCreada.pais, operacionCreada.nombre)
@@ -19,7 +18,6 @@ class OperacionRepositoryMongo extends OperacionRepository{
 
     async asignarUnidad(unidadId,operacionId){
         const operacion = await OperacionSchema.findOne({_id:operacionId})
-        console.log(operacion)
         operacion.unidades.push(unidadId)
         
         const operacionUpdate=await operacion.save()
@@ -36,6 +34,10 @@ class OperacionRepositoryMongo extends OperacionRepository{
     async findById(operacionId){
         const operacion = await OperacionSchema.findOne({_id:operacionId})
         return new Operacion(operacion.id,operacion.unidades,operacion.lider,operacion.descripcion,operacion.pais,operacion.nombre)
+    }
+
+    async asignarLider(operacionId,lider){
+        return OperacionSchema.updateOne({_id:operacionId},{$set:{lider:lider}})
     }
 
 }

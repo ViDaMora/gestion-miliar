@@ -19,8 +19,8 @@ class UnidadRepositoryMongo extends UnidadRepository{
      async asignarVehiculo(vehiculo,idUnidad){
         const unidad = await UnidadSchema.findOne({_id:idUnidad})
         unidad.vehiculos.push(vehiculo)
-        const vehiculos=  await unidad.save()
-       return {message:"Vehiculo asignado a la unidad",vehiculos:vehiculos}
+        const unidadUpdate=  await unidad.save()
+       return {message:"Vehiculo asignado a la unidad",unidad:unidadUpdate}
     
     }
 
@@ -28,8 +28,8 @@ class UnidadRepositoryMongo extends UnidadRepository{
     async asignarMilitar(unidadId,militar){
         const unidad = await UnidadSchema.findOne({_id:unidadId})
         unidad.militares.push(militar)
-        const militares=  await unidad.save()
-       return {message:"Militar asignado correctamente",militares:militares}
+        const unidadUpdate=  await unidad.save()
+       return {message:"Militar asignado correctamente",unidad:unidadUpdate}
 
     }
 
@@ -43,6 +43,10 @@ class UnidadRepositoryMongo extends UnidadRepository{
     async findAll(){
         const unidades = await UnidadSchema.find({})
         return unidades.map(unidad => new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos))
+    }
+
+    async updateEstado(unidadId){
+        return UnidadSchema.updateOne({unidadId:unidadId},{asignada:true})
     }
 
 }

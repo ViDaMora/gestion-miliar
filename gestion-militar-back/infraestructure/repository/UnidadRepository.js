@@ -45,5 +45,9 @@ class UnidadRepositoryMongo extends UnidadRepository{
         return unidades.map(unidad => new Unidad(unidad._id,unidad.tipoUnidad,unidad.encargado,unidad.asignada,unidad.militares,unidad.vehiculos))
     }
 
+    async updateEstado(unidadId){
+        return UnidadSchema.updateOne({unidadId:unidadId},{asignada:true})
+    }
+
 }
 module.exports = {UnidadRepositoryMongo}

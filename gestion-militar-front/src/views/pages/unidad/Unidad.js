@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnidad } from '../../../application/actions/UnidadAction'
 import Header from "../../components/Header";
+import ModalGlobal from "../../components/ModalGlobal";
 
 
 const Unidad = () => {
@@ -13,17 +14,32 @@ const Unidad = () => {
         unidades();
     }, [dispatch]);
 
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleClickMilitar = () => {
+        handleShow()
+    }
+
+    const handleClickVehiculo = () => {
+        handleShow()
+    }
+
 
     const unidades = useSelector((state) => state.unidades.unidades)
+    const soldiers = useSelector((state) => state.soldiers.soldier)
 
     return (
         <>
 
             <Header />
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
             <div className="container-fluid">
+                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} showMilitarTable={true} showVehiculoTable={true} />
                 <table className="table table-striped border">
                     <thead className="table bg-dark table-dark">
                         <tr>
@@ -44,8 +60,8 @@ const Unidad = () => {
                                     <td>{unidad.militares.length}</td>
                                     <td>{unidad.vehiculos.length}</td>
                                     <td>
-                                        <button className="btn btn-info">Editar</button>
-                                        <button className="btn btn-danger">Borrar</button>
+                                        <button className="btn btn-warning" onClick={() => handleClickMilitar()}>Asignar Militar</button>
+                                        <button className="btn btn-info" onClick={() => handleClickVehiculo()}>Asignar Vehiculo</button>
                                     </td>
                                 </tr>
                             ))}

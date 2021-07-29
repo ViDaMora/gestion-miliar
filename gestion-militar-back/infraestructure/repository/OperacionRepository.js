@@ -16,5 +16,13 @@ class OperacionRepositoryMongo extends OperacionRepository{
     
     }
 
+    async asignarUnidad(operacionId,unidad){
+        const operacion = await OperacionSchema.findOne({_id:operacionId})
+        operacion.unidades.push(unidad)
+        const operacionUpdate=await operacion.save()
+        return {message:"operacion asignada correctamente",operacion:operacionUpdate}
+
+    }
+
 }
 module.exports = {OperacionRepositoryMongo}

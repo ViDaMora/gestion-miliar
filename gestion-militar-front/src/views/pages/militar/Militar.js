@@ -22,6 +22,19 @@ const Militar = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    const [selectedId, setSelectedId] = useState(null);
+    const [showData, setShowData] = useState(false);
+    const editSubmit = (id) => {
+        setSelectedId(id)
+        setShowData(true)
+        handleShow()
+    }
+
+    const handleClick = () =>{
+        setSelectedId(null)
+        setShowData(false)
+        handleShow()
+    }
 
     const soldiers = useSelector((state) => state.soldiers.soldier)
 
@@ -32,10 +45,10 @@ const Militar = () => {
             <br />
             <br />
             <div className="container-fluid">
-                <Button variant="primary" onClick={handleShow}>
+                <Button variant="primary" onClick={()=>handleClick()}>
                     Crear Militar
                 </Button>
-                <ModalGlobal handleClose={handleClose} show={show} showData={false} />
+                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} id={selectedId} showData={showData} showMilitar={true} />
                 <table className="table table-striped border">
                     <thead className="table bg-dark table-dark">
                         <tr>
@@ -64,7 +77,7 @@ const Militar = () => {
                                     <td>{nameEditor(soldier?.autoridad)}</td>
                                     <td>{soldier.activo}</td>
                                     <td>
-                                        <button className="btn btn-info">Editar</button>
+                                        <button className="btn btn-info" onClick={() => editSubmit(soldier.id)}>Editar</button>
                                         <button className="btn btn-danger">Borrar</button>
                                     </td>
                                 </tr>

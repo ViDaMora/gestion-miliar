@@ -28,7 +28,8 @@ export function createSoldierAction(soldier) {
 export function deleteSoldierAction(id) {
     return async (dispatch) => {
         try {
-            const resp = await EndPointAxios.delete('/militar/' + id);
+            console.log({id: id})
+            const resp = await EndPointAxios.delete('/militar', {id: id});
             if (resp.data.errorMessage) {
                 alert(resp.data.errorMessage)
             }

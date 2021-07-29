@@ -48,7 +48,7 @@ const Lider = () => {
                                     <td>{lider.genero}</td>
                                     <td>{lider.edad}</td>
                                     <td>{lider.autoridad}</td>
-                                    <td>{lider.activo}</td>
+                                    <td>{lider.activo ? "Si" : "No"}</td>
                                     <td>
                                         <button className="btn btn-info">Editar</button>
                                         <button className="btn btn-danger">Borrar</button>

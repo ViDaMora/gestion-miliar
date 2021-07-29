@@ -41,7 +41,7 @@ const Militar = () => {
     const editStatus = (soldier) => {
         dispatch(updateSoldierAction(soldier.id, {
             ...soldier, activo: true
-        }))
+        }));
     }
 
 

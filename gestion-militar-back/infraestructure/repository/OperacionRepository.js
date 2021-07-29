@@ -24,5 +24,9 @@ class OperacionRepositoryMongo extends OperacionRepository{
 
     }
 
+    async findAll(){
+        return OperacionSchema.find({})
+    }
+
 }
 module.exports = {OperacionRepositoryMongo}

@@ -1,8 +1,10 @@
 let {Crear_Operacion} = require('../../../application/usecase/operacion/Crear_Operacion')
 let {Asignar_Unidad} = require('../../../application/usecase/operacion/Asignar_Unidad')
+let {Obtener_Operaciones} = require('../../../application/usecase/operacion/Obtener_Operaciones')
 let {UnidadRepositoryMongo}= require('../../repository/UnidadRepository')
 let {OperacionRepositoryMongo}= require('../../repository/OperacionRepository')
 let {LiderRepositoryMongo}= require('../../repository/LiderRepository')
+const { Obtener_Vehiculos } = require('../../../application/usecase/vehiculo/Obtener_Vehiculos')
 
 
 
@@ -29,6 +31,15 @@ async function addUnidad(req,res){
     }
 }
 
+async function getAllOperaciones(req,res){
+    try{
+        let operaciones=await  Obtener_Operaciones(OperacionRepositoryMongo.prototype)
+        res.json(operaciones)
+    }catch(error){
+        res.status(500).send(error);
+    }
+}
 
 
-module.exports = {addOperacion,addUnidad}
+
+module.exports = {addOperacion,addUnidad,getAllOperaciones}

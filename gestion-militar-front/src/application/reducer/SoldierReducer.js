@@ -22,10 +22,11 @@ export default function SoldierInfo(state = initialState, action) {
         case DELETE_SOLDIER:
             return { ...state, soldier: [...state.soldier.filter(militar => militar.id !== action.payload)] };
         case UPDATE_SOLDIER:
-            let militarUpdated = state.soldier.filter(militar => militar.cc === action.payload)
+            let militarUpdated = state.soldier.filter(militar=> militar.cc === action.payload)
             militarUpdated = militarUpdated[0]
             militarUpdated = { ...militarUpdated, activo: true }
             return { ...state, soldier: [...state.soldier.map(militar => militar.cc === action.payload ? militarUpdated : militar)] };
+
         default:
             return state;
     }

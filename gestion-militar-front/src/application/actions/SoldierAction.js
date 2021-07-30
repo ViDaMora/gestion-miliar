@@ -27,9 +27,9 @@ export function createSoldierAction(soldier) {
 
 export function deleteSoldierAction(id) {
     return async (dispatch) => {
-        let body = {id: id}
+        let body = { id: id }
         try {
-            const resp = await EndPointAxios.delete('/militar', {data:body});
+            const resp = await EndPointAxios.delete('/militar', { data: body });
             if (resp.data.errorMessage) {
                 alert(resp.data.errorMessage)
             }
@@ -45,9 +45,15 @@ export function deleteSoldierAction(id) {
 
 export function AsignarLiderAction(cc) {
     return async (dispatch) => {
-        try {   
-           await EndPointAxios.post('/lider',{cc:cc});
-            dispatch(updateSoldier(cc))
+        try {
+            const resp = await EndPointAxios.post('/lider', { cc: cc });
+            if (resp.data.errorMessage) {
+                alert(resp.data.errorMessage)
+            }
+            else {
+                dispatch(updateSoldier(cc))
+                alert("Lider asignado correctamente");
+            }
         } catch (error) {
             dispatch(updateSoldierError())
         }

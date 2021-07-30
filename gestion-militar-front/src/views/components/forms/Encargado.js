@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { soldierAction } from '../../../application/actions/SoldierAction'
@@ -8,6 +8,7 @@ const Encargado = ({ handleClose }) => {
     const dispatch = useDispatch();
 
     const asignarEncargado = () => {
+        handleClose();
 
     }
 
@@ -19,7 +20,6 @@ const Encargado = ({ handleClose }) => {
     const soldiers = useSelector((state) => state.soldiers.soldier)
 
     return (
-
         <>
             <Modal.Title>Asignar Encargado</Modal.Title>
             <Table striped bordered >
@@ -31,7 +31,6 @@ const Encargado = ({ handleClose }) => {
                     </tr>
                 </thead>
                 <tbody>
-
                     {soldiers?.length === 0
                         ? <h5>No hay militares</h5>
                         : soldiers?.map((soldier) => (
@@ -46,9 +45,6 @@ const Encargado = ({ handleClose }) => {
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
-                </Button>
-                <Button variant="success" onClick={() => asignarEncargado()}>
-                    Asignar
                 </Button>
             </Modal.Footer>
         </>

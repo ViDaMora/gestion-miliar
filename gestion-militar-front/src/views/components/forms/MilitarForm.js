@@ -101,21 +101,20 @@ const MilitarForm = ({ handleClose, showData, soldiers, id }) => {
                     <Form.Control type="number" placeholder="Edad" name="edad" value={edad} onChange={handleChange} required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicAutoridad">
-                    <Form.Label>Autoridad</Form.Label>
-                    <Form.Control type="text" placeholder="Autoridad" name="autoridad" value={autoridad} onChange={handleChange} required />
+                    <Form.Label>Autoridad</Form.Label>                    
+                    <Form.Select aria-label="Default select example" name="autoridad" value={autoridad} onChange={handleChange} required>
+                        <option>Seleccione una opción</option>
+                        <option value="general">General</option>
+                        <option value="teniente">Teniente</option>
+                        <option value="mayor">Mayor</option>
+                        <option value="bregadier">Brigadier</option>
+                        <option value="coronel">Coronel</option>
+                        <option value="comandante">Comandante</option>
+                        <option value="capitan">Capitan</option>
+                        <option value="sargento">Sargento</option>
+                        <option value="cabo">Cabo</option>
+                    </Form.Select>
                 </Form.Group>
-                <Form.Select aria-label="Default select example">
-                    <option>Seleccione una opción</option>
-                    <option value="1">General</option>
-                    <option value="2">Teniente</option>
-                    <option value="3">Mayor</option>
-                    <option value="3">Brigadier</option>
-                    <option value="3">Coronel</option>
-                    <option value="3">Comandante</option>
-                    <option value="3">Capitan</option>
-                    <option value="3">Sargento</option>
-                    <option value="3">Cabo</option>
-                </Form.Select>
             </Form>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>

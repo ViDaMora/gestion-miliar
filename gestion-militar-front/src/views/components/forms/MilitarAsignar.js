@@ -47,6 +47,9 @@ const MilitarAsignar = ({ handleClose }) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
                 </Button>
+                <Button variant="secondary" onClick={() => asignarMilitar()}>
+                    Asignar
+                </Button>
             </Modal.Footer>
         </>
     );

@@ -52,6 +52,7 @@ const Unidad = () => {
                         <tr>
                             <th scope="col">Tipo Unidad</th>
                             <th scope="col">Encargado</th>
+                            <th scope="col">Autoridad Encargado</th>
                             <th scope="col">Cantidad Militares</th>
                             <th scope="col">Cantidad Vehículos</th>
                             <th scope="col">Acción</th>
@@ -64,6 +65,7 @@ const Unidad = () => {
                                 <tr>
                                     <td>{unidad.tipoUnidad}</td>
                                     <td>{unidad.encargado.nombre}</td>
+                                    <td>{unidad.encargado.autoridad}</td>
                                     <td>{unidad.militares.length}</td>
                                     <td>{unidad.vehiculos.length}</td>
                                     <td>

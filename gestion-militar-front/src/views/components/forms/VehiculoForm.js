@@ -72,7 +72,12 @@ const VehiculoForm = ({ handleClose, showData, vehiculos, id }) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCedula">
                     <Form.Label>Tipo Vehículo</Form.Label>
-                    <Form.Control type="text" placeholder="Tipo Vehículo" name="tipoVehiculo" value={tipoVehiculo} onChange={handleChange} required />
+                    <Form.Select aria-label="Default select example" name="tipoVehiculo" value={tipoVehiculo} onChange={handleChange} required>
+                        <option>Seleccione una opción</option>
+                        <option value="terrestre">Terrestre</option>
+                        <option value="aereo">Aereo</option>
+                        <option value="marino">Marino</option>
+                    </Form.Select>
                 </Form.Group>
             </Form>
             <Modal.Footer>

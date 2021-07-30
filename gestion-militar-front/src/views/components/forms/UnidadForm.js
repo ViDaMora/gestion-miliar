@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-import { createVehiculoAction } from '../../../application/actions/VehiculoActions';
+import { createUnidadAction } from '../../../application/actions/UnidadAction';
 
-const VehiculoForm = ({ handleClose, showData, vehiculos, id }) => {
+const UnidadForm = ({ handleClose, showData, unidades, id }) => {
 
     const dispatch = useDispatch();
 
     const [formState, setFormState] = useState({
-        url: "",
+        tipoUnidad: "",
         tipoVehiculo: "",
 
     });
 
-    const { url, tipoVehiculo } = formState;
+    const { tipoUnidad, tipoVehiculo } = formState;
 
     const handleChange = (e) => {
         const value = e.target.value
@@ -34,7 +34,7 @@ const VehiculoForm = ({ handleClose, showData, vehiculos, id }) => {
         }
 
         setValidated(true);
-        dispatch(createVehiculoAction(formState));
+        dispatch(createUnidadAction(formState));
         handleClose();
     };
 
@@ -44,8 +44,8 @@ const VehiculoForm = ({ handleClose, showData, vehiculos, id }) => {
             <Modal.Title>Agregar Vehículo</Modal.Title>
             <Form noValidate validated={validated}>
                 <Form.Group className="mb-3" controlId="formBasicNombre">
-                    <Form.Label>Imagen Vehículo</Form.Label>
-                    <Form.Control type="text" placeholder="URL Imagen" name="url" value={url} onChange={handleChange} required />
+                    <Form.Label>Tipo Unidad</Form.Label>
+                    <Form.Control type="text" placeholder="URL Imagen" name="tipoUnidad" value={tipoUnidad} onChange={handleChange} required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicCedula">
                     <Form.Label>Tipo Vehículo</Form.Label>
@@ -69,4 +69,4 @@ const VehiculoForm = ({ handleClose, showData, vehiculos, id }) => {
     );
 }
 
-export default VehiculoForm;
+export default UnidadForm;

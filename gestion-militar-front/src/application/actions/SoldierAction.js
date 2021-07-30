@@ -20,7 +20,7 @@ export function createSoldierAction(soldier) {
                 alert("Militar creado correctamente");
             }
         } catch (error) {
-            dispatch(createSoldierError(true));
+            dispatch(createSoldierError(error));
         }
     }
 }
@@ -38,7 +38,7 @@ export function deleteSoldierAction(id) {
                 alert("Militar eliminado correctamente");
             }
         } catch (error) {
-            dispatch(deleteSoldierError())
+            dispatch(deleteSoldierError(error))
         }
     }
 }
@@ -55,7 +55,7 @@ export function AsignarLiderAction(cc) {
                 alert("Lider asignado correctamente");
             }
         } catch (error) {
-            dispatch(updateSoldierError())
+            dispatch(updateSoldierError(error))
         }
     }
 }
@@ -91,6 +91,6 @@ const updateSoldier = (body) => ({
 });
 
 const updateSoldierError = (error) => ({
-    type: DELETE_SOLDIER,
+    type: DELETE_SOLDIER_ERROR,
     payload: error
 });

@@ -19,7 +19,6 @@ const MilitarAsignar = ({ handleClose }) => {
     const soldiers = useSelector((state) => state.soldiers.soldier)
 
     return (
-
         <>
             <Modal.Title>Asignar Militar</Modal.Title>
             <Table striped bordered >
@@ -31,7 +30,6 @@ const MilitarAsignar = ({ handleClose }) => {
                     </tr>
                 </thead>
                 <tbody>
-
                     {soldiers?.length === 0
                         ? <h5>No hay militares</h5>
                         : soldiers?.map((soldier) => (

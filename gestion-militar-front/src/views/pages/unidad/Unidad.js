@@ -1,9 +1,9 @@
+import { Button } from "bootstrap";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnidad } from '../../../application/actions/UnidadAction'
 import Header from "../../components/Header";
 import ModalGlobal from "../../components/ModalGlobal";
-
 
 const Unidad = () => {
 
@@ -34,6 +34,7 @@ const Unidad = () => {
         setShowVehiculoTable(true)
         setShowMilitarTable(false)
         setShowEncargado(false)
+        setShowCreateUnidad(false)
         handleShow()
     }
 
@@ -41,6 +42,15 @@ const Unidad = () => {
     const [showEncargado, setShowEncargado] = useState(false);
     const handleClickEncargado = () => {
         setShowEncargado(true)
+        setShowVehiculoTable(false)
+        setShowMilitarTable(false)
+        setShowCreateUnidad(false)
+        handleShow()
+    }
+    const [showCreateUnidad, setShowCreateUnidad] = useState(false);
+    const handleClick = () => {
+        setShowCreateUnidad(true)
+        setShowEncargado(false)
         setShowVehiculoTable(false)
         setShowMilitarTable(false)
         handleShow()
@@ -51,13 +61,17 @@ const Unidad = () => {
 
     return (
         <>
-
             <Header />
             <br />
             <br />
             <br />
             <div className="container-fluid">
-                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} showMilitarTable={showMilitarTable} showVehiculoTable={showVehiculoTable} showEncargado={showEncargado} />
+                <Button variant="primary" onClick={() => handleClick()}>
+                    Crear Unidad
+                </Button>
+                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers}
+                    showMilitarTable={showMilitarTable} showVehiculoTable={showVehiculoTable}
+                    showEncargado={showEncargado} showCreateUnidad={showCreateUnidad} />
                 <table className="table table-striped border">
                     <thead className="table bg-dark table-dark">
                         <tr>
@@ -66,6 +80,7 @@ const Unidad = () => {
                             <th scope="col">Autoridad Encargado</th>
                             <th scope="col">Cantidad Militares</th>
                             <th scope="col">Cantidad Vehículos</th>
+                            <th scope="col">Estado</th>
                             <th scope="col">Acción</th>
                         </tr>
                     </thead>
@@ -79,10 +94,14 @@ const Unidad = () => {
                                     <td>{unidad.encargado.autoridad}</td>
                                     <td>{unidad.militares.length}</td>
                                     <td>{unidad.vehiculos.length}</td>
+                                    <td>{unidad.asignada ? "Asignada" : "Sin Asignar"}</td>
                                     <td>
                                         <button className="btn btn-warning" onClick={() => handleClickMilitar()}>Asignar Militar</button>
                                         <button className="btn btn-info" onClick={() => handleClickVehiculo()}>Asignar Vehiculo</button>
-                                        <button className="btn btn-primary" onClick={() => handleClickEncargado()}>Encargado</button>
+                                        {/* {
+                                            unidad.encargado? &&
+                                                <button className="btn btn-primary" onClick={() => handleClickEncargado()}>Encargado</button>
+                                        } */}
                                     </td>
                                 </tr>
                             ))}

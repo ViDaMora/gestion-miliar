@@ -2,14 +2,15 @@ import React, { useEffect } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { soldierAction } from '../../../application/actions/SoldierAction'
+import { AsignarEncargadoAction } from '../../../application/actions/UnidadAction';
 
 const Encargado = ({ handleClose }) => {
 
     const dispatch = useDispatch();
 
-    const asignarEncargado = () => {
+    const asignarEncargado = (cc) => {
+        dispatch(AsignarEncargadoAction(cc));
         handleClose();
-
     }
 
     useEffect(() => {

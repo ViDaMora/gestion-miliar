@@ -3,11 +3,11 @@ import { Modal, Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { soldierAction } from '../../../application/actions/SoldierAction'
 
-const MilitarAsignar = ({ handleClose }) => {
+const Encargado = ({ handleClose }) => {
 
     const dispatch = useDispatch();
 
-    const asignarMilitar = () => {
+    const asignarEncargado = () => {
 
     }
 
@@ -21,7 +21,7 @@ const MilitarAsignar = ({ handleClose }) => {
     return (
 
         <>
-            <Modal.Title>Asignar Militar</Modal.Title>
+            <Modal.Title>Asignar Encargado</Modal.Title>
             <Table striped bordered >
                 <thead>
                     <tr>
@@ -38,7 +38,7 @@ const MilitarAsignar = ({ handleClose }) => {
                             <tr>
                                 <td>{soldier.nombre}</td>
                                 <td>{soldier.autoridad}</td>
-                                <button className="btn btn-success" onClick={() => asignarMilitar(soldier.cc)}>Asignar</button>
+                                <button className="btn btn-success" onClick={() => asignarEncargado(soldier.cc)}>Asignar</button>
                             </tr>
                         ))}
                 </tbody>
@@ -47,7 +47,7 @@ const MilitarAsignar = ({ handleClose }) => {
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
                 </Button>
-                <Button variant="success" onClick={() => asignarMilitar()}>
+                <Button variant="success" onClick={() => asignarEncargado()}>
                     Asignar
                 </Button>
             </Modal.Footer>
@@ -55,4 +55,4 @@ const MilitarAsignar = ({ handleClose }) => {
     );
 }
 
-export default MilitarAsignar;
+export default Encargado;

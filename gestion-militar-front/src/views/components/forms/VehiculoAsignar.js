@@ -21,7 +21,7 @@ const VehiculoAsignar = ({ handleClose }) => {
     return (
 
         <>
-            <Modal.Title>Asignar vehículo</Modal.Title>
+            <Modal.Title>Asignar Vehículo</Modal.Title>
             <Table striped bordered >
                 <thead>
                     <tr>
@@ -46,6 +46,9 @@ const VehiculoAsignar = ({ handleClose }) => {
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
+                </Button>
+                <Button variant="success" onClick={handleClose}>
+                    Asignar
                 </Button>
             </Modal.Footer>
         </>

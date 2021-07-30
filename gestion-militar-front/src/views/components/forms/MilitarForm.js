@@ -86,7 +86,7 @@ const MilitarForm = ({ handleClose, showData, soldiers, id }) => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" name="email" value={email} onChange={handleChange} required />
+                    <Form.Control type="email" placeholder="Email" name="email" value={email} onChange={handleChange} required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicNacionalidad">
                     <Form.Label>Nacionalidad</Form.Label>

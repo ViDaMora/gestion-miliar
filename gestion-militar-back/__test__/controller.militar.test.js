@@ -24,7 +24,6 @@ describe('Militar',() => {
         afterAll(async () =>{
             const response= await axios.get('militar')
             const militar = response.data.filter(militar => militar.cc =="121212121212")
-            console.log(militar[0].id)
             await axios.delete('militar', {data:{id:militar[0].id}})
         })
 
@@ -32,7 +31,6 @@ describe('Militar',() => {
             const militar = militaresMock[0]
             const response = await axios.post('militar',militar)
             expect(response.status).toBe(200)
-            console.log(response.data)
             const {nombre,email,activo,cc}= response.data
             expect(nombre).toBe('victor mora')
             expect(email).toBe('151424@mail.com')

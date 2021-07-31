@@ -1,4 +1,4 @@
-import { GET_UNIDAD, GET_UNIDAD_ERROR, ASSIGN_MANAGER, ADD_UNIDAD, ADD_UNIDAD_ERROR } from '../types/UnidadYypes';
+import { GET_UNIDAD, GET_UNIDAD_ERROR, ASSIGN_SOLDIER, ADD_UNIDAD, ADD_UNIDAD_ERROR } from '../types/UnidadYypes';
 
 const initialState = {
     unidades: [],
@@ -15,7 +15,7 @@ export default function UnidadesInfo(state = initialState, action) {
             return { ...state, unidades: [...state.unidades, action.payload] };
         case ADD_UNIDAD_ERROR:
             return { ...state, error: action.payload };
-        case ASSIGN_MANAGER:
+        case ASSIGN_SOLDIER:
             return { ...state, unidades: [...state.soldier, action.payload] };
         default:
             return state

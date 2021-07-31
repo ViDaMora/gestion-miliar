@@ -1,15 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { soldierAction } from '../../../application/actions/SoldierAction'
+import { AsignarMilitarAction } from '../../../application/actions/UnidadAction'
 
 const MilitarAsignar = ({ handleClose }) => {
 
     const dispatch = useDispatch();
 
-    const asignarMilitar = () => {
-
+    const asignarMilitar = (e, soldier, unidad) => {
+        e.preventDefault()
+        dispatch(AsignarMilitarAction(unidad.id, soldier.cc))
     }
+
 
     useEffect(() => {
         const militares = () => dispatch(soldierAction());
@@ -17,6 +20,18 @@ const MilitarAsignar = ({ handleClose }) => {
     }, [dispatch]);
 
     const soldiers = useSelector((state) => state.soldiers.soldier)
+
+    const filteredNotActiveSoldiers = () => {
+        let notActive = []
+        soldiers.forEach(soldier => {
+            if (!soldier.activo) {
+                notActive.push(soldier)
+            }
+        })
+        return notActive
+    }
+
+    const notActive = filteredNotActiveSoldiers()
 
     return (
         <>
@@ -30,13 +45,13 @@ const MilitarAsignar = ({ handleClose }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {soldiers?.length === 0
+                    {notActive?.length === 0
                         ? <h5>No hay militares</h5>
-                        : soldiers?.map((soldier) => (
+                        : notActive?.map((soldier) => (
                             <tr>
                                 <td>{soldier.nombre}</td>
                                 <td>{soldier.autoridad}</td>
-                                <button className="btn btn-success" onClick={() => asignarMilitar(soldier.cc)}>Asignar</button>
+                                <Button variant="success" onClick={(e) => asignarMilitar(e, soldier)}>Asignar</Button>
                             </tr>
                         ))}
                 </tbody>
@@ -44,9 +59,6 @@ const MilitarAsignar = ({ handleClose }) => {
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
-                </Button>
-                <Button variant="success" onClick={() => asignarMilitar()}>
-                    Asignar
                 </Button>
             </Modal.Footer>
         </>

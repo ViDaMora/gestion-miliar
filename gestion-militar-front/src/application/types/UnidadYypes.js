@@ -4,4 +4,4 @@ export const GET_UNIDAD_ERROR = "GET_UNIDAD_ERROR";
 export const ADD_UNIDAD = "ADD_UNIDAD";
 export const ADD_UNIDAD_ERROR = "ADD_UNIDAD_ERROR";
 
-export const ASSIGN_MANAGER = "ASSIGN_MANAGER";
+export const ASSIGN_SOLDIER = "ASSIGN_MANAGER";

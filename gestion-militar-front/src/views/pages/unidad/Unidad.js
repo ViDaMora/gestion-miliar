@@ -1,9 +1,11 @@
-import { Button } from "bootstrap";
+import { Button } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUnidad } from '../../../application/actions/UnidadAction'
 import Header from "../../components/Header";
 import ModalGlobal from "../../components/ModalGlobal";
+import { soldierAction } from '../../../application/actions/SoldierAction'
+
 
 const Unidad = () => {
 
@@ -12,6 +14,8 @@ const Unidad = () => {
     useEffect(() => {
         const unidades = () => dispatch(getUnidad());
         unidades();
+        const militares = () => dispatch(soldierAction());
+        militares();
     }, [dispatch]);
 
     const [show, setShow] = useState(false);
@@ -24,7 +28,7 @@ const Unidad = () => {
     const handleClickMilitar = () => {
         setShowMilitarTable(true)
         setShowVehiculoTable(false)
-        setShowEncargado(false)
+        setShowCreateUnidad(false)
         handleShow()
     }
 
@@ -33,24 +37,14 @@ const Unidad = () => {
     const handleClickVehiculo = () => {
         setShowVehiculoTable(true)
         setShowMilitarTable(false)
-        setShowEncargado(false)
         setShowCreateUnidad(false)
         handleShow()
     }
 
-    //Modal encargado
-    const [showEncargado, setShowEncargado] = useState(false);
-    const handleClickEncargado = () => {
-        setShowEncargado(true)
-        setShowVehiculoTable(false)
-        setShowMilitarTable(false)
-        setShowCreateUnidad(false)
-        handleShow()
-    }
+    //Modal Crear
     const [showCreateUnidad, setShowCreateUnidad] = useState(false);
     const handleClick = () => {
         setShowCreateUnidad(true)
-        setShowEncargado(false)
         setShowVehiculoTable(false)
         setShowMilitarTable(false)
         handleShow()
@@ -69,9 +63,9 @@ const Unidad = () => {
                 <Button variant="primary" onClick={() => handleClick()}>
                     Crear Unidad
                 </Button>
-                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers}
+                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} unidades={unidades}
                     showMilitarTable={showMilitarTable} showVehiculoTable={showVehiculoTable}
-                    showEncargado={showEncargado} showCreateUnidad={showCreateUnidad} />
+                    showCreateUnidad={showCreateUnidad} />
                 <table className="table table-striped border">
                     <thead className="table bg-dark table-dark">
                         <tr>
@@ -98,10 +92,6 @@ const Unidad = () => {
                                     <td>
                                         <button className="btn btn-warning" onClick={() => handleClickMilitar()}>Asignar Militar</button>
                                         <button className="btn btn-info" onClick={() => handleClickVehiculo()}>Asignar Vehiculo</button>
-                                        {/* {
-                                            unidad.encargado? &&
-                                                <button className="btn btn-primary" onClick={() => handleClickEncargado()}>Encargado</button>
-                                        } */}
                                     </td>
                                 </tr>
                             ))}

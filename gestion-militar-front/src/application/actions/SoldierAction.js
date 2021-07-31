@@ -35,7 +35,7 @@ export function deleteSoldierAction(id) {
             }
             else {
                 dispatch(deleteSoldier(id))
-                alert("Militar eliminado correctamente");
+                alert(resp.data.message);
             }
         } catch (error) {
             dispatch(deleteSoldierError(error))

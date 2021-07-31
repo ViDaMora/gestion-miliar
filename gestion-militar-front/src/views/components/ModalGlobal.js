@@ -15,7 +15,7 @@ const ModalGlobal = ({ handleClose, show, showData, soldiers, vehiculos, unidade
                     {showMilitar && <MilitarForm handleClose={handleClose} soldiers={soldiers} id={id} showData={showData} />}
                     {showVehiculo && <VehiculoForm handleClose={handleClose} vehiculos={vehiculos} showData={showData} />}
                     {showCreateUnidad && <UnidadForm handleClose={handleClose} soldiers={soldiers} unidades={unidades} showData={showData} />}
-                    {showMilitarTable && <MilitarAsignar handleClose={handleClose} unidades={unidades} />}
+                    {showMilitarTable && <MilitarAsignar handleClose={handleClose} />}
                     {showVehiculoTable && <VehiculoAsignar handleClose={handleClose} />}
                 </Modal.Body>
             </Modal>

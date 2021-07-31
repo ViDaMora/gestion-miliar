@@ -8,9 +8,9 @@ const MilitarAsignar = ({ handleClose }) => {
 
     const dispatch = useDispatch();
 
-    const asignarMilitar = (e, soldier, unidad) => {
+    const asignarMilitar = (e, soldier) => {
         e.preventDefault()
-        dispatch(AsignarMilitarAction(unidad.id, soldier.cc))
+        dispatch(AsignarMilitarAction(soldier.cc))
     }
 
 
@@ -21,6 +21,7 @@ const MilitarAsignar = ({ handleClose }) => {
 
     const soldiers = useSelector((state) => state.soldiers.soldier)
 
+    //Filtar los disponibles
     const filteredNotActiveSoldiers = () => {
         let notActive = []
         soldiers.forEach(soldier => {
@@ -31,6 +32,7 @@ const MilitarAsignar = ({ handleClose }) => {
         return notActive
     }
 
+    //Const activo
     const notActive = filteredNotActiveSoldiers()
 
     return (

@@ -1,0 +1,5 @@
+export const GET_VEHICULO = "GET_VEHICULO";
+export const GET_VEHICULO_ERROR = "GET_VEHICULO_ERROR";
+
+export const ADD_VEHICULO = "ADD_SOLDIER";
+export const ADD_VEHICULO_ERROR = "ADD_SOLDIER_ERROR";

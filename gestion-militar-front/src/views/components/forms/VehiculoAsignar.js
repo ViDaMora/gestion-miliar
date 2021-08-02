@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { AsignarVehiculoAction } from '../../../application/actions/UnidadAction';
 import { getVehiculos } from '../../../application/actions/VehiculoActions';
 
-const VehiculoAsignar = ({ handleClose }) => {
+const VehiculoAsignar = ({ handleClose, id }) => {
 
     const dispatch = useDispatch();
 
-    const asignarVehiculo = () => {
-
+    const asignarVehiculo = async (idVehiculo) => {
+        dispatch(AsignarVehiculoAction(id, idVehiculo))
     }
 
     useEffect(() => {
@@ -25,7 +26,6 @@ const VehiculoAsignar = ({ handleClose }) => {
             <Table striped bordered >
                 <thead>
                     <tr>
-                        <th>Nombre</th>
                         <th>Tipo Vehículo</th>
                         <th>Asignar</th>
                     </tr>
@@ -36,7 +36,6 @@ const VehiculoAsignar = ({ handleClose }) => {
                         ? <h5>No hay militares</h5>
                         : vehiculos?.map((vehiculo) => (
                             <tr>
-                                <td>{vehiculo.nombre}</td>
                                 <td>{vehiculo.tipoVehiculo}</td>
                                 <button className="btn btn-success" onClick={() => asignarVehiculo(vehiculo.id)}>Asignar</button>
                             </tr>
@@ -46,9 +45,6 @@ const VehiculoAsignar = ({ handleClose }) => {
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                     Cerrar
-                </Button>
-                <Button variant="success" onClick={handleClose}>
-                    Asignar
                 </Button>
             </Modal.Footer>
         </>

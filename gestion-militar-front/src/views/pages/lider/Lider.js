@@ -34,7 +34,6 @@ const Lider = () => {
                             <th scope="col">Edad</th>
                             <th scope="col">Autoridad</th>
                             <th scope="col">Estado</th>
-                            <th scope="col">Acción</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -48,11 +47,7 @@ const Lider = () => {
                                     <td>{lider.genero}</td>
                                     <td>{lider.edad}</td>
                                     <td>{lider.autoridad}</td>
-                                    <td>{lider.activo ? "Si" : "No"}</td>
-                                    <td>
-                                        <button className="btn btn-info">Editar</button>
-                                        <button className="btn btn-danger">Borrar</button>
-                                    </td>
+                                    <td>{lider.activo ? "No disponible" : "Disponible"}</td>
                                 </tr>
                             ))}
                     </tbody>

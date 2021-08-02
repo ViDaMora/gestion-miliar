@@ -89,7 +89,7 @@ const Militar = () => {
                                     <td>{nameEditor(soldier?.autoridad)}</td>
                                     <td>{soldier.activo ? "No Disponible" : "Disponible"}</td>
                                     <td>
-                                        <button className="btn btn-info" onClick={() => editSubmit(soldier.id)}>Editar</button>
+                                        {/* <button className="btn btn-info" onClick={() => editSubmit(soldier.id)}>Editar</button> */}
                                         <button className="btn btn-danger" onClick={() => deleteSoldier(soldier.id)}>Borrar</button>
                                     </td>
                                     <td>

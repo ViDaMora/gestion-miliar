@@ -12,7 +12,6 @@ const MilitarAsignar = ({ handleClose, id }) => {
         dispatch(AsignarMilitarAction(id, cc))
     }
 
-
     useEffect(() => {
         const militares = () => dispatch(soldierAction());
         militares();
@@ -40,7 +39,6 @@ const MilitarAsignar = ({ handleClose, id }) => {
             <Table striped bordered >
                 <thead>
                     <tr>
-                        <th>UnidadId</th>
                         <th>Nombre</th>
                         <th>Autoridad</th>
                         <th>Asignar</th>
@@ -51,7 +49,6 @@ const MilitarAsignar = ({ handleClose, id }) => {
                         ? <h5>No hay militares disponibles</h5>
                         : notActive?.map((soldier) => (
                             <tr>
-                                <td>{id}</td>
                                 <td>{soldier.nombre}</td>
                                 <td>{soldier.autoridad}</td>
                                 <Button variant="success" onClick={() => asignarMilitar(soldier.cc)}>Asignar</Button>

@@ -5,6 +5,7 @@ import { getUnidad } from '../../../application/actions/UnidadAction'
 import Header from "../../components/Header";
 import ModalGlobal from "../../components/ModalGlobal";
 import { soldierAction } from '../../../application/actions/SoldierAction'
+import { getVehiculos } from "../../../application/actions/VehiculoActions";
 
 
 const Unidad = () => {
@@ -16,6 +17,8 @@ const Unidad = () => {
         unidades();
         const militares = () => dispatch(soldierAction());
         militares();
+        const vehiculos = () => dispatch(getVehiculos());
+        vehiculos();
     }, [dispatch]);
 
     const [show, setShow] = useState(false);
@@ -23,8 +26,10 @@ const Unidad = () => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    //Modal militar
+    //Enviar ID Unidad
     const [selectedId, setSelectedId] = useState(null);
+
+    //Modal militar
     const [showMilitarTable, setShowMilitarTable] = useState(false);
     const handleClickMilitar = (id) => {
         setSelectedId(id)
@@ -36,7 +41,8 @@ const Unidad = () => {
 
     //Modal vehiculo
     const [showVehiculoTable, setShowVehiculoTable] = useState(false);
-    const handleClickVehiculo = () => {
+    const handleClickVehiculo = (id) => {
+        setSelectedId(id)
         setShowVehiculoTable(true)
         setShowMilitarTable(false)
         setShowCreateUnidad(false)
@@ -93,7 +99,7 @@ const Unidad = () => {
                                     <td>{unidad.asignada ? "Asignada" : "Sin Asignar"}</td>
                                     <td>
                                         <button className="btn btn-warning" onClick={() => handleClickMilitar(unidad.id)}>Asignar Militar</button>
-                                        <button className="btn btn-info" onClick={() => handleClickVehiculo()}>Asignar Vehiculo</button>
+                                        <button className="btn btn-info" onClick={() => handleClickVehiculo(unidad.id)}>Asignar Vehiculo</button>
                                     </td>
                                 </tr>
                             ))}

@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from '../pages/Login/Login';
 import PublicRoute from './PublicRoute';
 import PrivateRoute from './PirvateRoute';
-import Home from '../pages/home/Home';
 import Lider from '../pages/lider/Lider';
 import Militar from '../pages/militar/Militar';
 import Vehiculo from '../pages/vehiculo/Vehiculo';
@@ -40,9 +39,9 @@ class Routers extends Component {
         return (
             <Router>
                 <Switch>
-                    {this.state.authenticated ? <Route exact path="/" component={Home} /> : <Route exact path="/" component={Login} />}
+                    {this.state.authenticated ? <Route exact path="/" component={Militar} /> : <Route exact path="/" component={Login} />}
                     <PublicRoute exact path="/login" authenticated={this.state.authenticated} component={Login} />
-                    <PrivateRoute exact path="/" authenticated={this.state.authenticated} component={Home} />
+                    <PrivateRoute exact path="/" authenticated={this.state.authenticated} component={Militar} />
                     <PrivateRoute exact path="/lider" authenticated={this.state.authenticated} component={Lider} />
                     <PrivateRoute exact path="/militar" authenticated={this.state.authenticated} component={Militar} />
                     <PrivateRoute exact path="/vehiculo" authenticated={this.state.authenticated} component={Vehiculo} />

@@ -36,6 +36,7 @@ async function Crear_Unidad(cc,tipoUnidad,UnidadRepository,MilitarRepository){
     let unidadNueva=await UnidadRepository.save(unidad)
     return unidadNueva
 
+
 }
 
 module.exports = {Crear_Unidad}

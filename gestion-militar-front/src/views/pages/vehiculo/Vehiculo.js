@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVehiculos } from '../../../application/actions/VehiculoActions';
+import { deleteVehicleAction, getVehiculos } from '../../../application/actions/VehiculoActions';
 import Header from "../../components/Header";
 
 import { Card, Button } from "react-bootstrap";
@@ -24,9 +24,12 @@ const Vehiculo = () => {
         handleShow()
     }
 
-    return (
-        <div>
+    const deleteVehicle = async (id) => {
+        dispatch(deleteVehicleAction(id))
+    };
 
+    return (
+        <>
             <Header />
             <br />
             <br />
@@ -35,7 +38,7 @@ const Vehiculo = () => {
                 <Button variant="primary" onClick={() => handleClick()}>
                     Crear Vehículo
                 </Button>
-                <ModalGlobal handleClose={handleClose} show={show}  showVehiculo={true} />
+                <ModalGlobal handleClose={handleClose} show={show} showVehiculo={true} />
                 <div className="row">
                     {vehiculos?.length === 0
                         ? <h5>No hay vehículos</h5>
@@ -44,12 +47,13 @@ const Vehiculo = () => {
                                 <Card.Img variant="top" src={vehiculo.url} />
                                 <Card.Body>
                                     <Card.Title>{vehiculo.tipoVehiculo}</Card.Title>
+                                    <Button variant="danger" onClick={()=> deleteVehicle(vehiculo.id)}>Borrar</Button>
                                 </Card.Body>
                             </Card>
                         ))}
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 

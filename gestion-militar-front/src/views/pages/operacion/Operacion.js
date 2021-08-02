@@ -44,8 +44,8 @@ const Operacion = () => {
                                     <td>{operacion.descripcion}</td>
                                     <td>{operacion.pais}</td>
                                     <td>
-                                        {/* <button className="btn btn-info">Asignar Unidad</button> */}
-                                        {/* <button className="btn btn-warning">Asignar Lider</button> */}
+                                        <button className="btn btn-info">Asignar Unidad</button>
+                                        <button className="btn btn-warning">Asignar Lider</button>
                                     </td>
                                 </tr>
                             ))}

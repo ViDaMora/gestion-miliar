@@ -39,21 +39,20 @@ const VehiculoForm = ({ handleClose, showData, vehiculos, id }) => {
     };
 
     return (
-
         <>
             <Modal.Title>Agregar Vehículo</Modal.Title>
             <Form noValidate validated={validated}>
-                <Form.Group className="mb-3" controlId="formBasicNombre">
+                <Form.Group className="mb-3" controlId="formBasicImagenURL">
                     <Form.Label>Imagen Vehículo</Form.Label>
-                    <Form.Control type="text" placeholder="URL Imagen" name="url" value={url} onChange={handleChange} required />
+                    <Form.Control type="text" placeholder="URL Imagen" name="url" value={url} onChange={handleChange} required={true} />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCedula">
+                <Form.Group className="mb-3" controlId="formBasicTipoVehiculo">
                     <Form.Label>Tipo Vehículo</Form.Label>
-                    <Form.Select aria-label="Default select example" name="tipoVehiculo" value={tipoVehiculo} onChange={handleChange} required>
+                    <Form.Select aria-label="Default select example" name="tipoVehiculo" value={tipoVehiculo} onChange={handleChange} required >
                         <option>Seleccione una opción</option>
                         <option value="terrestre">Terrestre</option>
                         <option value="aereo">Aereo</option>
-                        <option value="marino">Marino</option>
+                        <option value="marítimo">Marítimo</option>
                     </Form.Select>
                 </Form.Group>
             </Form>

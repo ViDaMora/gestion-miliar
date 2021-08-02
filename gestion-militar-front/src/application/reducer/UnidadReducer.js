@@ -16,7 +16,7 @@ export default function UnidadesInfo(state = initialState, action) {
         case ADD_UNIDAD_ERROR:
             return { ...state, error: action.payload };
         case ASSIGN_SOLDIER:
-            return { ...state, unidades: [...state.soldier, action.payload] };
+            return { ...state, unidades: [...state.unidades, action.payload] };
         default:
             return state
     }

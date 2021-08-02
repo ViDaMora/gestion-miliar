@@ -24,8 +24,10 @@ const Unidad = () => {
     const handleShow = () => setShow(true);
 
     //Modal militar
+    const [selectedId, setSelectedId] = useState(null);
     const [showMilitarTable, setShowMilitarTable] = useState(false);
-    const handleClickMilitar = () => {
+    const handleClickMilitar = (id) => {
+        setSelectedId(id)
         setShowMilitarTable(true)
         setShowVehiculoTable(false)
         setShowCreateUnidad(false)
@@ -63,7 +65,7 @@ const Unidad = () => {
                 <Button variant="primary" onClick={() => handleClick()}>
                     Crear Unidad
                 </Button>
-                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} unidades={unidades}
+                <ModalGlobal handleClose={handleClose} show={show} soldiers={soldiers} id={selectedId}
                     showMilitarTable={showMilitarTable} showVehiculoTable={showVehiculoTable}
                     showCreateUnidad={showCreateUnidad} />
                 <table className="table table-striped border">
@@ -90,7 +92,7 @@ const Unidad = () => {
                                     <td>{unidad.vehiculos.length}</td>
                                     <td>{unidad.asignada ? "Asignada" : "Sin Asignar"}</td>
                                     <td>
-                                        <button className="btn btn-warning" onClick={() => handleClickMilitar()}>Asignar Militar</button>
+                                        <button className="btn btn-warning" onClick={() => handleClickMilitar(unidad.id)}>Asignar Militar</button>
                                         <button className="btn btn-info" onClick={() => handleClickVehiculo()}>Asignar Vehiculo</button>
                                     </td>
                                 </tr>

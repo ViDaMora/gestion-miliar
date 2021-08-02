@@ -1,4 +1,4 @@
-import { GET_UNIDAD, ASSIGN_SOLDIER, ADD_UNIDAD, ADD_UNIDAD_ERROR } from "../types/UnidadYypes";
+import { GET_UNIDAD, ASSIGN_SOLDIER, ASSIGN_SOLDIER_ERROR, ADD_UNIDAD, ADD_UNIDAD_ERROR } from "../types/UnidadYypes";
 import EndPointAxios from "../../infrastructure/services/api/axios"
 import { DELETE_SOLDIER_ERROR, UPDATE_SOLDIER } from "../types/SoldierTypes";
 
@@ -36,11 +36,10 @@ export function AsignarMilitarAction(id, cc) {
             }
             else {
                 dispatch(asignarMilitar(resp.data))
-                dispatch(updateSoldier(id, cc))
                 alert("Militar asignado correctamente");
             }
         } catch (error) {
-            dispatch(updateSoldierError())
+            dispatch(asignarMilitarError(error))
         }
     }
 }
@@ -48,16 +47,6 @@ export function AsignarMilitarAction(id, cc) {
 const listUnidad = (response) => ({
     type: GET_UNIDAD,
     payload: response
-})
-
-const updateSoldier = (body) => ({
-    type: UPDATE_SOLDIER,
-    payload: body
-});
-
-const updateSoldierError = (error) => ({
-    type: DELETE_SOLDIER_ERROR,
-    payload: error
 });
 
 const createUnidad = (unidad) => ({
@@ -73,4 +62,9 @@ const createUnidadError = (error) => ({
 const asignarMilitar = (body) => ({
     type: ASSIGN_SOLDIER,
     payload: body
+});
+
+const asignarMilitarError = (error) => ({
+    type: ASSIGN_SOLDIER_ERROR,
+    payload: error
 });

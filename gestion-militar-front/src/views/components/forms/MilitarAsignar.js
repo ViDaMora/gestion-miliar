@@ -1,16 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Modal, Button, Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { soldierAction } from '../../../application/actions/SoldierAction'
 import { AsignarMilitarAction } from '../../../application/actions/UnidadAction'
 
-const MilitarAsignar = ({ handleClose }) => {
+const MilitarAsignar = ({ handleClose, id }) => {
 
     const dispatch = useDispatch();
 
-    const asignarMilitar = (e, soldier) => {
-        e.preventDefault()
-        dispatch(AsignarMilitarAction(soldier.cc))
+    const asignarMilitar = async (cc) => {
+        dispatch(AsignarMilitarAction(id, cc))
     }
 
 
@@ -41,6 +40,7 @@ const MilitarAsignar = ({ handleClose }) => {
             <Table striped bordered >
                 <thead>
                     <tr>
+                        <th>UnidadId</th>
                         <th>Nombre</th>
                         <th>Autoridad</th>
                         <th>Asignar</th>
@@ -48,12 +48,13 @@ const MilitarAsignar = ({ handleClose }) => {
                 </thead>
                 <tbody>
                     {notActive?.length === 0
-                        ? <h5>No hay militares</h5>
+                        ? <h5>No hay militares disponibles</h5>
                         : notActive?.map((soldier) => (
                             <tr>
+                                <td>{id}</td>
                                 <td>{soldier.nombre}</td>
                                 <td>{soldier.autoridad}</td>
-                                <Button variant="success" onClick={(e) => asignarMilitar(e, soldier)}>Asignar</Button>
+                                <Button variant="success" onClick={() => asignarMilitar(soldier.cc)}>Asignar</Button>
                             </tr>
                         ))}
                 </tbody>

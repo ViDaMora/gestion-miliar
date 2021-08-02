@@ -21,7 +21,6 @@ const MilitarForm = ({ handleClose, showData, soldiers, id }) => {
     useEffect(() => {
         if (showData) {
             const soldier = soldiers.find(soldier => soldier.id === id)
-            console.log(soldier)
             setFormState({
                 nombre: soldier.nombre,
                 cc: soldier.cc,

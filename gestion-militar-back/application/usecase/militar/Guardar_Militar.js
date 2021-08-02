@@ -9,12 +9,13 @@ async function CreateMilitar(nombre,email,nacionalidad,cc,autoridad,genero,edad,
     succes:false};
     }
     
-    let militarExiste = await MilitarRepository.findByEmail(email)
-
+    let militarExiste = await MilitarRepository.findByEmail(email) || await MilitarRepository.findByCC(cc)
     if(militarExiste){
         return {errorMessage:"El militar ingresado ya existe",
          succes:false};
     }
+     
+    
     const militar = new Militar(null,nombre,email,false,nacionalidad,cc,autoridad,genero,edad)
 
     let respuest= await MilitarRepository.save(militar)

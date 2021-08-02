@@ -28,6 +28,8 @@ const MilitarSchema = mongoose.Schema({
 
     cc:{
         type:String,
+        require: [true, 'El cc es obligatorio'],
+        unique: [true, 'El cc debe ser unico'],
         lowercase: true,
         minLength: [2, 'La longitud minima de la cc  es 2'],
     },

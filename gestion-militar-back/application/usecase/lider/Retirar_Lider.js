@@ -5,7 +5,7 @@ async function Retirar_Lider(cc,LiderRepository){
         return {errorMessage: "Lider no encontrado",
                  succes: false}
     }
-     await LiderRepository.updateActive(cc)
+     await LiderRepository.updateInactivo(cc)
      return {message: "Lider retirado con exito",
             succes: true}
 }
